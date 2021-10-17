@@ -98,6 +98,8 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 						startLine = lineNo;
 						text.append(ch);
 						state = 7;
+					}else {
+						backChar(ch);
 					}
 				} else {			// ヘンな文字を読んだ
 					startCol = colNo - 1;
@@ -143,15 +145,17 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 				if(ch==(char) -1) {	//コメント途中でEOF
 					tk = new CToken(CToken.TK_ILL, startLine, startCol, text.toString());
 					accept = true;
-					break;
 				}else if(ch=='*') {
 					text.append(ch);
 					ch = readChar();
 					if(ch=='/') {
+						text.delete(0,text.length());
 						state = 0;
+					}else {
+						backChar(ch);
+						text.append(ch);
 					}
 				}
-				text.append(ch);
 				break;
 			}
 		}
