@@ -11,12 +11,19 @@ public class Factor extends CParseRule {
 	public Factor(CParseContext pcx) {
 	}
 	public static boolean isFirst(CToken tk) {
-		return Number.isFirst(tk);
+		return (FactorAmp.isFirst(tk)||Number.isFirst(tk));
 	}
 	public void parse(CParseContext pcx) throws FatalErrorException {
 		// ここにやってくるときは、必ずisFirst()が満たされている
-		number = new Number(pcx);
-		number.parse(pcx);
+		CTokenizer ct = pcx.getTokenizer();
+		CToken tk = ct.getCurrentToken(pcx);
+		if (tk.getType() == CToken.TK_AMP) {
+			number = new FactorAmp(pcx);
+			number.parse(pcx);
+		}else {
+			number = new Number(pcx);
+			number.parse(pcx);
+		}
 	}
 
 	public void semanticCheck(CParseContext pcx) throws FatalErrorException {

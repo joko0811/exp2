@@ -101,7 +101,11 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 					}else {
 						backChar(ch);
 					}
-				} else {			// ヘンな文字を読んだ
+				}else if(ch=='&'){
+					startCol = colNo - 1;
+					text.append(ch);
+					state = 8;
+				}else {			// ヘンな文字を読んだ
 					startCol = colNo - 1;
 					text.append(ch);
 					state = 2;
@@ -156,6 +160,10 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 						text.append(ch);
 					}
 				}
+				break;
+			case 8:
+				tk = new CToken(CToken.TK_AMP, lineNo, startCol, "&");
+				accept = true;
 				break;
 			}
 		}
