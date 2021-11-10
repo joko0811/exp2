@@ -67,6 +67,7 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 		StringBuffer text = new StringBuffer();
 
 		int state = 0;
+		int subState = 0;
 		boolean accept = false;
 		while (!accept) {
 			switch (state) {
@@ -77,8 +78,22 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 					startCol = colNo - 1;
 					state = 1;
 				} else if (ch >= '0' && ch <= '9') {
-					startCol = colNo - 1;
-					text.append(ch);
+					if(ch=='0') {
+						text.append(ch);
+						ch=readChar();
+						if(ch=='x') {	//16進数
+							text.append(ch);
+							subState=16;
+							startCol = colNo-2;
+						}else {	//8進数
+							backChar(ch);
+							subState=8;
+							startCol = colNo - 1;
+						}
+					}else {
+						text.append(ch);
+						startCol = colNo - 1;
+					}
 					state = 3;
 				} else if (ch == '+') {
 					startCol = colNo - 1;
@@ -121,13 +136,58 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 				break;
 			case 3:					// 数（10進数）の開始
 				ch = readChar();
-				if (Character.isDigit(ch)) {
-					text.append(ch);
-				} else {
-					// 数の終わり
-					backChar(ch);	// 数を表さない文字は戻す（読まなかったことにする）
-					tk = new CToken(CToken.TK_NUM, lineNo, startCol, text.toString());
-					accept = true;
+				switch(subState) {
+				case 0:
+					if (Character.isDigit(ch)) {
+						text.append(ch);
+					}else {
+						backChar(ch);	// 数を表さない文字は戻す（読まなかったことにする）
+						int decimal=Integer.parseInt(text.toString());
+						if(decimal>=-32768&&decimal<=32767) {
+							tk = new CToken(CToken.TK_NUM, lineNo, startCol, text.toString());
+						}else {
+							tk = new CToken(CToken.TK_ILL, lineNo, startCol, text.toString());
+						}
+						accept=true;
+					}
+					break;
+				case 8:
+					if(ch >= '0' && ch <= '7') {
+						text.append(ch);
+					}else {
+						backChar(ch);	// 数を表さない文字は戻す（読まなかったことにする）
+						int octal=0;
+						octal=Integer.decode(text.toString());
+						if(octal>= 0 && octal<=0177777) {
+							tk = new CToken(CToken.TK_NUM, lineNo, startCol, text.toString());
+						}else {
+							tk = new CToken(CToken.TK_ILL, lineNo, startCol, text.toString());
+						}
+						accept=true;
+					}
+					break;
+				case 16:
+					if(Character.isDigit(ch)) {
+						text.append(ch);
+					}else if(ch >= 'a' && ch <= 'f') {
+						text.append(ch);
+					}else {
+						backChar(ch);	// 数を表さない文字は戻す（読まなかったことにする）
+						int hex=0;
+						if(!text.toString().equals("0x")) {
+							hex=Integer.decode(text.toString());
+							if(hex>=0 && hex<=0xffff) {
+								tk = new CToken(CToken.TK_NUM, lineNo, startCol, text.toString());
+							}else {
+								tk = new CToken(CToken.TK_ILL, lineNo, startCol, text.toString());
+							}
+						}else {
+							tk = new CToken(CToken.TK_ILL, lineNo, startCol, text.toString());
+						}
+						accept=true;
+					}
+					break;
+					
 				}
 				break;
 			case 4:					// +を読んだ
