@@ -30,9 +30,12 @@ public class UnsignedFactor extends CParseRule {
 			if(Expression.isFirst(tk)){
 				number = new Expression(pcx);
 				number.parse(pcx);
-				tk = ct.getNextToken(pcx); // )の分一個進める
+				tk = ct.getCurrentToken(pcx);
 				if(tk.getType()==CToken.TK_RPAR){
 					rPar =tk;
+					tk = ct.getNextToken(pcx);
+				}else{
+					pcx.fatalError(tk.toExplainString() + "(の後ろに)がありません");
 				}
 			}
 		}
@@ -40,17 +43,9 @@ public class UnsignedFactor extends CParseRule {
 
 	public void semanticCheck(CParseContext pcx) throws FatalErrorException {
 		if (number != null) {
-			if(lPar !=null){
-				if(rPar !=null){
-					number.semanticCheck(pcx);
-				}else{
-					pcx.fatalError(lPar.toExplainString()+"かっこ[ ( ]の後が不正です");
-				}
-			}else{
-				number.semanticCheck(pcx);
-				setCType(number.getCType());		// number の型をそのままコピー
-				setConstant(number.isConstant());	// number は常に定数
-			}
+			number.semanticCheck(pcx);
+			setCType(number.getCType());		// number の型をそのままコピー
+			setConstant(number.isConstant());	// number は常に定数
 		}
 	}
 

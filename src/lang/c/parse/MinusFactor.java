@@ -20,14 +20,20 @@ public class MinusFactor extends CParseRule {
 		if (UnsignedFactor.isFirst(tk)) {
 			unsignedFactor = new UnsignedFactor(pcx);
 			unsignedFactor.parse(pcx);
+		}else{
+			pcx.fatalError(op.toExplainString() + "-の後ろに要素がありません");
 		}
 	}
 
 	public void semanticCheck(CParseContext pcx) throws FatalErrorException {
 		if (unsignedFactor != null) {
 			unsignedFactor.semanticCheck(pcx);
-			setCType(unsignedFactor.getCType());		// unsignedFactor の型をそのままコピー
-			setConstant(unsignedFactor.isConstant());	// unsignedFactor は常に定数
+			if(unsignedFactor.getCType().getType()==CType.T_pint){
+				pcx.fatalError(op.toExplainString() + "-の後ろが&です");
+			}else{
+				setCType(unsignedFactor.getCType());		// unsignedFactor の型をそのままコピー
+				setConstant(unsignedFactor.isConstant());	// unsignedFactor は常に定数
+			}
 		}
 	}
 

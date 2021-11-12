@@ -24,7 +24,9 @@ class ExpressionSub extends CParseRule {
         if (Term.isFirst(tk)) {
             right = new Term(pcx);
             right.parse(pcx);
-        }
+        }else {
+			pcx.fatalError(tk.toExplainString() + "-の後ろはtermです");
+		}
     }
 
     public void semanticCheck(CParseContext pcx) throws FatalErrorException {
