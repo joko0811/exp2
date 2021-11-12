@@ -39,7 +39,7 @@ public class FactorAmp extends CParseRule {
 		PrintStream o = pcx.getIOContext().getOutStream();
 		o.println(";;; factorAmp starts");
 		if (number != null) {
-			if (number != null) { number.codeGen(pcx); }
+			number.codeGen(pcx);
 		}
 		o.println(";;; factorAmp completes");
 	}

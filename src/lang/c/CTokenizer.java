@@ -211,10 +211,11 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 				tk = new CToken(CToken.TK_MINUS, lineNo, startCol, "-");
 				accept = true;
 				break;
-			case 6:					// //を読んだ
+			case 6:					// /を読んだ
 				ch = readChar();
 				switch(subState) {
 				case 0:
+				    backChar(ch);
 					tk = new CToken(CToken.TK_DIV, lineNo, startCol, "/");
 					accept = true;
 					break;
