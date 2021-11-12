@@ -19,8 +19,12 @@ public class FactorAmp extends CParseRule {
 		CToken tk = ct.getCurrentToken(pcx);
 		amp = tk;
 		tk = ct.getNextToken(pcx);
-		number = new Number(pcx);
-		number.parse(pcx);
+		if(Number.isFirst(tk)){
+			number = new Number(pcx);
+			number.parse(pcx);
+		}else{
+			pcx.fatalError(tk.toExplainString() + "&の後ろはnumberです");
+		}
 	}
 
 	public void semanticCheck(CParseContext pcx) throws FatalErrorException {

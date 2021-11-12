@@ -219,7 +219,7 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 					accept = true;
 					break;
 				case 1:
-					if (ch == '\n'||ch == '\r') {
+					if (ch == '\n'||ch == '\r'||ch==(char) -1) {
 						text.delete(0,text.length());
 						state = 0;
 						subState = 0;
