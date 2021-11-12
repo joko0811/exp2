@@ -105,20 +105,18 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 					state = 5;
 				}else if (ch == '/') {
 					state = 6;
+					text.append(ch);
+					startCol = colNo - 1;
+					startLine = lineNo;
 					ch = readChar();
 					if(ch =='/') {
 						subState=1;
 					}else if(ch == '*') {
-						text.append('/');
-						text.append(ch);
-						startCol = colNo - 1;
-						startLine = lineNo;
 						subState=2;
 					}else {
-						startCol = colNo - 1;
-						text.append(ch);
 						subState=0;
 					}
+					backChar(ch);
 				}else if(ch=='&'){
 					startCol = colNo - 1;
 					text.append(ch);
@@ -221,8 +219,10 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 					accept = true;
 					break;
 				case 1:
-					if (ch == '\n') {
+					if (ch == '\n'||ch == '\r') {
+						text.delete(0,text.length());
 						state = 0;
+						subState = 0;
 					}
 					break;
 				case 2:
@@ -237,7 +237,6 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 							state = 0;
 						}else {
 							backChar(ch);
-							text.append(ch);
 						}
 					}
 					break;
