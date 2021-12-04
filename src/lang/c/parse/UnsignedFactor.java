@@ -5,14 +5,14 @@ import lang.*;
 import lang.c.*;
 
 public class UnsignedFactor extends CParseRule {
-	// unsignedFactor ::= factorAmp | number | LPAR expression RPAR
+	// unsignedFactor ::= factorAmp | number | LPAR expression RPAR | primary
 	private CToken lPar, rPar;
 	private CParseRule number;
 
 	public UnsignedFactor(CParseContext pcx) {
 	}
 	public static boolean isFirst(CToken tk) {
-		return (FactorAmp.isFirst(tk)||Number.isFirst(tk)||tk.getType() == CToken.TK_LPAR);
+		return (FactorAmp.isFirst(tk)||Number.isFirst(tk)||tk.getType() == CToken.TK_LPAR||Primary.isFirst(tk));
 	}
 	public void parse(CParseContext pcx) throws FatalErrorException {
 		// ここにやってくるときは、必ずisFirst()が満たされている
@@ -24,7 +24,7 @@ public class UnsignedFactor extends CParseRule {
 		}else if(Number.isFirst(tk)){
 			number = new Number(pcx);
 			number.parse(pcx);
-		}else{ // LPAR expression RPAR
+		}else if(tk.getType()==CToken.TK_LPAR){ // LPAR expression RPAR
 			lPar = tk;
 			tk = ct.getNextToken(pcx);
 			if(Expression.isFirst(tk)){
@@ -38,6 +38,9 @@ public class UnsignedFactor extends CParseRule {
 					pcx.fatalError(tk.toExplainString() + "(の後ろに)がありません");
 				}
 			}
+		}else if(Primary.isFirst(tk)){
+			number=new Primary(pcx);
+			number.parse(pcx);
 		}
 	}
 

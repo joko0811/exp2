@@ -133,7 +133,19 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 					startCol = colNo - 1;
 					text.append(ch);
 					state=10;
-				}else {			// ヘンな文字を読んだ
+				}else if(ch=='['){
+					startCol = colNo -1;
+					text.append(ch);
+					state=11;
+				}else if(ch==']'){
+					startCol = colNo -1;
+					text.append(ch);
+					state=12;
+				}else if(Character.isLetter(ch)){
+					startCol = colNo -1;
+					text.append(ch);
+					state=13;
+				}else{			// ヘンな文字を読んだ
 					startCol = colNo - 1;
 					text.append(ch);
 					state = 2;
@@ -148,6 +160,7 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 				accept = true;
 				break;
 			case 3:					// 数（10進数）の開始
+                //TODO
 				ch = readChar();
 				switch(subState) {
 				case 0:
@@ -259,6 +272,24 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 				tk = new CToken(CToken.TK_RPAR, lineNo, startCol, ")");
 				accept = true;
 				break;
+			case 11:
+				tk = new CToken(CToken.TK_LBAR, lineNo, startCol, "[");
+				accept = true;
+				break;
+			case 12:
+				tk = new CToken(CToken.TK_RBAR, lineNo, startCol, "]");
+				accept = true;
+				break;
+			case 13:
+				ch = readChar();
+				if(Character.isLetterOrDigit(ch)||ch=='_'){
+					text.append(ch);
+				}else{
+					backChar(ch);
+					tk = new CToken(CToken.TK_IDENT, lineNo, startCol,text.toString());
+					accept = true;
+				}
+			    break;
 			}
 		}
 		return tk;

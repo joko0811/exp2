@@ -23,6 +23,7 @@ public class Number extends CParseRule {
 	public void semanticCheck(CParseContext pcx) throws FatalErrorException {
 		this.setCType(CType.getCType(CType.T_int));
 		this.setConstant(true);
+		//TODO
 	}
 
 	public void codeGen(CParseContext pcx) throws FatalErrorException {
