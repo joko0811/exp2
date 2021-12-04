@@ -6,11 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="941ba714-978a-43b4-9d7d-7b529cb3ad84" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lang/c/MiniCompiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/MiniCompiler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minicTips.md" beforeDir="false" afterPath="$PROJECT_DIR$/minicTips.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/CType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/CType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/Expression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/Expression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/Factor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/Factor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/FactorAmp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/FactorAmp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lang/c/parse/Ident.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/Ident.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/PrimaryMult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/PrimaryMult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/Variable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lang/c/test.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/test.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/MinusFactor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/MinusFactor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/Number.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/Number.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/PlusFactor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/PlusFactor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/UnsignedFactor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/UnsignedFactor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +120,7 @@
       <workItem from="1636689398556" duration="231000" />
       <workItem from="1636689644126" duration="4232000" />
       <workItem from="1636694350738" duration="1598000" />
-      <workItem from="1638579631816" duration="11570000" />
+      <workItem from="1638579631816" duration="15155000" />
     </task>
     <servers />
   </component>
@@ -145,17 +150,6 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/lang/c/parse/Variable.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -36,7 +36,7 @@ public class FactorAmp extends CParseRule {
 		if (number != null) {
 			number.semanticCheck(pcx);
 			setCType(CType.getCType(CType.T_pint));
-			setConstant(true);	// number は常に定数
+			setConstant(number.isConstant());	// number は常に定数
 		}
 	}
 

@@ -32,7 +32,7 @@ public class MinusFactor extends CParseRule {
 				pcx.fatalError(op.toExplainString() + "-の後ろが&です");
 			}else{
 				setCType(unsignedFactor.getCType());		// unsignedFactor の型をそのままコピー
-				setConstant(unsignedFactor.isConstant());	// unsignedFactor は常に定数
+				setConstant(unsignedFactor.isConstant());
 			}
 		}
 	}

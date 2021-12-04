@@ -21,9 +21,6 @@ public class Number extends CParseRule {
 	}
 
 	public void semanticCheck(CParseContext pcx) throws FatalErrorException {
-		this.setCType(CType.getCType(CType.T_int));
-		this.setConstant(true);
-		//TODO
 		CTokenizer ct = pcx.getTokenizer();
 		CToken tk = ct.getCurrentToken(pcx);
 		String number = tk.getText();
@@ -45,6 +42,8 @@ public class Number extends CParseRule {
 				pcx.fatalError(tk.toExplainString()+"表現できる範囲外の値です");
 			}
 		}
+		this.setCType(CType.getCType(CType.T_int));
+		this.setConstant(true);
 	}
 
 	public void codeGen(CParseContext pcx) throws FatalErrorException {

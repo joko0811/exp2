@@ -48,7 +48,7 @@ public class UnsignedFactor extends CParseRule {
 		if (number != null) {
 			number.semanticCheck(pcx);
 			setCType(number.getCType());		// number の型をそのままコピー
-			setConstant(number.isConstant());	// number は常に定数
+			setConstant(number.isConstant());
 		}
 	}
 
