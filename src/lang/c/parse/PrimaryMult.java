@@ -32,9 +32,11 @@ public class PrimaryMult extends CParseRule {
 
     public void codeGen(CParseContext pcx) throws FatalErrorException {
         PrintStream o = pcx.getIOContext().getOutStream();
-        o.println(";;; primaryMult starts");
         if (variable != null) {
+            variable.codeGen(pcx);
+            o.println("\tMOV\t-(R6), R0\t; PrimaryMult: アドレスを取り出して、内容を参照して、積む<"
+                    + mul.toExplainString() + ">");
+            o.println("\tMOV\t(R0), (R6)+\t; PrimaryMult:");
         }
-        o.println(";;; primaryMult completes");
     }
 }

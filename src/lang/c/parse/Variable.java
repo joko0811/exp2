@@ -7,7 +7,7 @@ import lang.c.*;
 
 public class Variable extends CParseRule {
     // variable ::= ident [ array ]
-    private CParseRule array;
+    private CParseRule ident,array;
     public Variable(CParseContext pcx) {
     }
     public static boolean isFirst(CToken tk) {
@@ -16,11 +16,12 @@ public class Variable extends CParseRule {
     public void parse(CParseContext pcx) throws FatalErrorException {
         CTokenizer ct = pcx.getTokenizer();
         CToken tk = ct.getCurrentToken(pcx);
+        ident=new Ident(pcx);
+        ident.parse(pcx);
+        tk=ct.getCurrentToken(pcx);
         if(Array.isFirst(tk)){
            array = new Array(pcx);
            array.parse(pcx);
-        }else{
-            pcx.fatalError(tk.toExplainString()+"identの後ろにarrayがありません");
         }
     }
 
