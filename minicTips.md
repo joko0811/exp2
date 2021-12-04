@@ -1,3 +1,18 @@
+# 構造
+
+program ::= expression
+expression ::= term { expressionAdd | expressionSub }
+expressionAdd ::= PLUS term
+expressionSub ::= MINUS term
+term ::= factor { termMult | termDiv }
+termMult ::= MULT factor
+termDiv ::= DIV factor
+factor ::= plusFactor | minusFactor | unsignedFactor
+plusFactor ::= PLUS unsignedFactor
+minusFactor ::= MINUS unsignedFactor （注）LPAR=’(’, RPAR=’)’
+unsignedFactor ::= factorAmp | number | LPAR expression RPAR
+number ::= NUM
+
 # minicTips(実験1時点)
 
 - /srcにプログラムが入ってる
