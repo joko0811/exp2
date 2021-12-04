@@ -24,6 +24,27 @@ public class Number extends CParseRule {
 		this.setCType(CType.getCType(CType.T_int));
 		this.setConstant(true);
 		//TODO
+		CTokenizer ct = pcx.getTokenizer();
+		CToken tk = ct.getCurrentToken(pcx);
+		String number = tk.getText();
+		if(number.charAt(0)=='0'){
+			if(number.charAt(1)=='x'){
+				int hex = Integer.decode(number);
+				if(hex<0 || hex>0xffff) {
+					pcx.fatalError(tk.toExplainString()+"表現できる範囲外の値です");
+				}
+			}else{
+				int octal=Integer.decode(number);
+				if(octal< 0 || octal>0177777) {
+					pcx.fatalError(tk.toExplainString()+"表現できる範囲外の値です");
+				}
+			}
+		}else{
+			int decimal=Integer.parseInt(number);
+			if(decimal<-32768||decimal>32767) {
+				pcx.fatalError(tk.toExplainString()+"表現できる範囲外の値です");
+			}
+		}
 	}
 
 	public void codeGen(CParseContext pcx) throws FatalErrorException {

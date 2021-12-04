@@ -168,12 +168,7 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 						text.append(ch);
 					}else {
 						backChar(ch);	// 数を表さない文字は戻す（読まなかったことにする）
-						int decimal=Integer.parseInt(text.toString());
-						if(decimal>=-32768&&decimal<=32767) {
-							tk = new CToken(CToken.TK_NUM, lineNo, startCol, text.toString());
-						}else {
-							tk = new CToken(CToken.TK_ILL, lineNo, startCol, text.toString());
-						}
+						tk = new CToken(CToken.TK_NUM, lineNo, startCol, text.toString());
 						accept=true;
 					}
 					break;
@@ -182,13 +177,7 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 						text.append(ch);
 					}else {
 						backChar(ch);	// 数を表さない文字は戻す（読まなかったことにする）
-						int octal=0;
-						octal=Integer.decode(text.toString());
-						if(octal>= 0 && octal<=0177777) {
-							tk = new CToken(CToken.TK_NUM, lineNo, startCol, text.toString());
-						}else {
-							tk = new CToken(CToken.TK_ILL, lineNo, startCol, text.toString());
-						}
+						tk = new CToken(CToken.TK_NUM, lineNo, startCol, text.toString());
 						accept=true;
 					}
 					break;
@@ -199,14 +188,8 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 						text.append(ch);
 					}else {
 						backChar(ch);	// 数を表さない文字は戻す（読まなかったことにする）
-						int hex=0;
 						if(!text.toString().equals("0x")) {
-							hex=Integer.decode(text.toString());
-							if(hex>=0 && hex<=0xffff) {
-								tk = new CToken(CToken.TK_NUM, lineNo, startCol, text.toString());
-							}else {
-								tk = new CToken(CToken.TK_ILL, lineNo, startCol, text.toString());
-							}
+							tk = new CToken(CToken.TK_NUM, lineNo, startCol, text.toString());
 						}else {
 							tk = new CToken(CToken.TK_ILL, lineNo, startCol, text.toString());
 						}

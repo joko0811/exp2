@@ -6,13 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="941ba714-978a-43b4-9d7d-7b529cb3ad84" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minicTips.md" beforeDir="false" afterPath="$PROJECT_DIR$/minicTips.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lang/c/CToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/CToken.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lang/c/CTokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/CTokenizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/FactorAmp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/FactorAmp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/Array.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/Array.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lang/c/parse/Number.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/Number.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/UnsignedFactor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/UnsignedFactor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lang/c/test.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/test.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +113,7 @@
       <workItem from="1636689398556" duration="231000" />
       <workItem from="1636689644126" duration="4232000" />
       <workItem from="1636694350738" duration="1598000" />
-      <workItem from="1638579631816" duration="6411000" />
+      <workItem from="1638579631816" duration="8300000" />
     </task>
     <servers />
   </component>
