@@ -281,7 +281,7 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 				}
 			    break;
 			case 14:
-				tk = new CToken(CToken.TK_STAT, lineNo, startCol, "=");
+				tk = new CToken(CToken.TK_ASSIGN, lineNo, startCol, "=");
 				accept = true;
 				break;
 			case 15:

@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lang/c/CToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/CToken.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lang/c/CTokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/CTokenizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/Program.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +116,7 @@
       <workItem from="1636689644126" duration="4232000" />
       <workItem from="1636694350738" duration="1598000" />
       <workItem from="1638579631816" duration="15155000" />
-      <workItem from="1638756706914" duration="14008000" />
+      <workItem from="1638756706914" duration="15254000" />
     </task>
     <servers />
   </component>
