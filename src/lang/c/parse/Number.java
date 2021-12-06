@@ -21,6 +21,25 @@ public class Number extends CParseRule {
 	}
 
 	public void semanticCheck(CParseContext pcx) throws FatalErrorException {
+		String number = num.getText();
+		if(number.charAt(0)=='0'){
+			if(number.charAt(1)=='x'){
+				int hex = Integer.decode(number);
+				if(hex<0 || hex>0xffff) {
+					pcx.fatalError(num.toExplainString()+"表現できる範囲外の値です");
+				}
+			}else{
+				int octal=Integer.decode(number);
+				if(octal< 0 || octal>0177777) {
+					pcx.fatalError(num.toExplainString()+"表現できる範囲外の値です");
+				}
+			}
+		}else{
+			int decimal=Integer.parseInt(number);
+			if(decimal<-32768||decimal>32767) {
+				pcx.fatalError(num.toExplainString()+"表現できる範囲外の値です");
+			}
+		}
 		this.setCType(CType.getCType(CType.T_int));
 		this.setConstant(true);
 	}

@@ -133,7 +133,19 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 					startCol = colNo - 1;
 					text.append(ch);
 					state=10;
-				}else {			// ヘンな文字を読んだ
+				}else if(ch=='['){
+					startCol = colNo -1;
+					text.append(ch);
+					state=11;
+				}else if(ch==']'){
+					startCol = colNo -1;
+					text.append(ch);
+					state=12;
+				}else if(Character.isLetter(ch)){
+					startCol = colNo -1;
+					text.append(ch);
+					state=13;
+				}else{			// ヘンな文字を読んだ
 					startCol = colNo - 1;
 					text.append(ch);
 					state = 2;
@@ -155,12 +167,7 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 						text.append(ch);
 					}else {
 						backChar(ch);	// 数を表さない文字は戻す（読まなかったことにする）
-						int decimal=Integer.parseInt(text.toString());
-						if(decimal>=-32768&&decimal<=32767) {
-							tk = new CToken(CToken.TK_NUM, lineNo, startCol, text.toString());
-						}else {
-							tk = new CToken(CToken.TK_ILL, lineNo, startCol, text.toString());
-						}
+						tk = new CToken(CToken.TK_NUM, lineNo, startCol, text.toString());
 						accept=true;
 					}
 					break;
@@ -169,13 +176,7 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 						text.append(ch);
 					}else {
 						backChar(ch);	// 数を表さない文字は戻す（読まなかったことにする）
-						int octal=0;
-						octal=Integer.decode(text.toString());
-						if(octal>= 0 && octal<=0177777) {
-							tk = new CToken(CToken.TK_NUM, lineNo, startCol, text.toString());
-						}else {
-							tk = new CToken(CToken.TK_ILL, lineNo, startCol, text.toString());
-						}
+						tk = new CToken(CToken.TK_NUM, lineNo, startCol, text.toString());
 						accept=true;
 					}
 					break;
@@ -186,14 +187,8 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 						text.append(ch);
 					}else {
 						backChar(ch);	// 数を表さない文字は戻す（読まなかったことにする）
-						int hex=0;
 						if(!text.toString().equals("0x")) {
-							hex=Integer.decode(text.toString());
-							if(hex>=0 && hex<=0xffff) {
-								tk = new CToken(CToken.TK_NUM, lineNo, startCol, text.toString());
-							}else {
-								tk = new CToken(CToken.TK_ILL, lineNo, startCol, text.toString());
-							}
+							tk = new CToken(CToken.TK_NUM, lineNo, startCol, text.toString());
 						}else {
 							tk = new CToken(CToken.TK_ILL, lineNo, startCol, text.toString());
 						}
@@ -259,6 +254,24 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 				tk = new CToken(CToken.TK_RPAR, lineNo, startCol, ")");
 				accept = true;
 				break;
+			case 11:
+				tk = new CToken(CToken.TK_LBAR, lineNo, startCol, "[");
+				accept = true;
+				break;
+			case 12:
+				tk = new CToken(CToken.TK_RBAR, lineNo, startCol, "]");
+				accept = true;
+				break;
+			case 13:
+				ch = readChar();
+				if(Character.isLetterOrDigit(ch)||ch=='_'){
+					text.append(ch);
+				}else{
+					backChar(ch);
+					tk = new CToken(CToken.TK_IDENT, lineNo, startCol,text.toString());
+					accept = true;
+				}
+			    break;
 			}
 		}
 		return tk;

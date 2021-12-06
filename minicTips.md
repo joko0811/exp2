@@ -1,41 +1,59 @@
-# minicTips(実験1時点)
+# 実験Ⅱ miniCV説明書
 
-- /srcにプログラムが入ってる
+## 概要
 
-- IDEAでビルドしたけどなんかエラーの詳細を教えてくれなかった
+2021年度情報科学実験Ⅱ
 
-- 佐藤さんがecllipseだと詳細を教えてくれるって言ってたのでエクリプスにいこうした
+実験4実施時
 
-- 最初なんかビルドできなかったけどなんかしたら治った。なにしたんだっけ
+## 構造
 
-- /src/lang/c/MiniConpiler.javaにメインクラスがある
-- 改行時に式の分割を行わない
+### 現状
 
-## 字句解析
+```
+program ::= expression
+expression ::= term { expressionAdd | expressionSub }
+expressionAdd ::= PLUS term
+expressionSub ::= MINUS term
+term ::= factor { termMult | termDiv }
+termMult ::= MULT factor
+termDiv ::= DIV factor
+factor ::= plusFactor | minusFactor | unsignedFactor
+plusFactor ::= PLUS unsignedFactor
+minusFactor ::= MINUS unsignedFactor
+unsignedFactor ::= factorAmp | number | LPAR expression RPAR
+factorAmp ::= AMP number
+number ::= NUM
+```
 
-- 字句解析パートが存在せず、構文解析時にまとめて行っている。言語理論踏襲しろよ
-- /src/lang/c/CTokenizer.javaのgetNextTokenで、取得したいときに一文字ずつ取得している
-- parse時、tokenがnumberだったときはgetNextTokenで次文字を取得している
-  - →必然的にパース後は数字以外の値を保持することになる
-- 複数桁の数字はデフォルトでうまく取得してくれている
+### ex4追加箇所
 
-## 構文解析
+```
+unsignedFactor ::= factorAmp | number | LPAR expression RPAR | addressToValue
+factorAmp ::= AMP ( number | primary )
+addressToValue ::= primary
+primary ::= primaryMult | variable
+primaryMult ::= MULT variable
+variable ::= ident [ array ]
+array ::= LBRA expression RBRA （注）LBRA=’[’, RBRA=’]’
+ident ::= IDENT （注)’_’ も英字として扱うこと
+```
 
-- Program.java parse実行時にファイル内式すべてのパースが一度に実行される
+## TODO
 
-## 手順（クソ雑）
+- [x] 8進数、16進数の大きさチェックをsemanticCheckに移動する
 
-0. MiniCompiler.javaにて最初のToken取得＆Program.parse実行
-1. Program.Parse内にてExpression.parse(実質これが本体)の実行
-   1. この時点で記号が来るはずなので各記号のparse実行
-      1. 各記号の計算に必要なtokenを読む
-      2. 構文木作成
-   2. 全ての記号に対して1を繰り返す
-2. 最後のTokenがEOFでなければエラー
+- [x] 添字を記述する部分— つまり、“[” と“]” の間に書く式— の型がint でなければならない
 
+- [x] 配列名のところに出てくる識別子はint[] 型またはint*[] 型でなければならないこと
 
+- [x] ポインタ参照（例えば、*p）では、p がint であってはいけないこと
 
-## 意味解析
+- [x] &*varの意味（Cでは使えない）
 
-## コード生成
+  varアドレスが示す番地から値をとってくる*に対して、&で取ってきた値の番地を訪ねているが、取ってきた値は変数ではなく定数のためよくないとかそんな感じかな
 
+- [x] instanceofを用いて「factorAmp の子節点にprimary がつながっているとき、その下にはprimaryMultクラスのオブジェクトが来てはいけない」ことを記述
+  - [x] PrimaryMult.isFirst() がtrue のときは文法エラーとする
+- [x] コード生成部
+- [ ] 四則演算の方チェック

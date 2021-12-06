@@ -5,7 +5,7 @@ import lang.*;
 import lang.c.*;
 
 public class Factor extends CParseRule {
-	// factor ::= number
+	// factor ::= plusFactor | minusFactor | unsignedFactor
 	private CParseRule factor;
 	public Factor(CParseContext pcx) {
 	}
@@ -31,8 +31,8 @@ public class Factor extends CParseRule {
 	public void semanticCheck(CParseContext pcx) throws FatalErrorException {
 		if (factor != null) {
 			factor.semanticCheck(pcx);
-			setCType(factor.getCType());		// number の型をそのままコピー
-			setConstant(factor.isConstant());	// number は常に定数
+			setCType(factor.getCType());
+			setConstant(factor.isConstant());
 		}
 	}
 
