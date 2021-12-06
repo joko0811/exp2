@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="941ba714-978a-43b4-9d7d-7b529cb3ad84" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lang/c/test.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/test.c" afterDir="false" />
-    </list>
+    <list default="true" id="941ba714-978a-43b4-9d7d-7b529cb3ad84" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -114,7 +111,7 @@
       <workItem from="1636689644126" duration="4232000" />
       <workItem from="1636694350738" duration="1598000" />
       <workItem from="1638579631816" duration="15155000" />
-      <workItem from="1638756706914" duration="17996000" />
+      <workItem from="1638756706914" duration="18321000" />
     </task>
     <servers />
   </component>
