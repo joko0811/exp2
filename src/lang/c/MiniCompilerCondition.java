@@ -3,7 +3,7 @@ package lang.c;
 import lang.*;
 import lang.c.parse.*;
 
-public class MiniCompiler {
+public class MiniCompilerCondition {
     public static void main(String[] args) {
         String inFile = "./src/lang/c/test.c"; // 適切なファイルを絶対パスで与えること
         IOContext ioCtx = new IOContext(inFile, System.out, System.err);
@@ -12,8 +12,8 @@ public class MiniCompiler {
         try {
             CTokenizer ct = pcx.getTokenizer();
             CToken tk = ct.getNextToken(pcx);
-            if (Program.isFirst(tk)) {
-                CParseRule parseTree = new Program(pcx);
+            if (Condition.isFirst(tk)) {
+                CParseRule parseTree = new Condition(pcx);
                 parseTree.parse(pcx);									// 構文解析
                 if (pcx.hasNoError()) parseTree.semanticCheck(pcx);		// 意味解析
                 if (pcx.hasNoError()) parseTree.codeGen(pcx);			// コード生成

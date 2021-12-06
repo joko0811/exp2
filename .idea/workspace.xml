@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="941ba714-978a-43b4-9d7d-7b529cb3ad84" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lang/c/CToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/CToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lang/c/CTokenRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/CTokenRule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lang/c/CTokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/CTokenizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/CType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/CType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/MiniCompiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/MiniCompiler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lang/c/test.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/test.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,11 +50,10 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="reference.idesettings.debugger.capture" />
   </component>
-  <component name="RunManager" selected="Application.TestCToken">
+  <component name="RunManager" selected="Application.MiniCompilerCondition">
     <configuration name="MiniCompiler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lang.c.MiniCompiler" />
       <module name="miniCV00forStudent" />
-      <option name="PROGRAM_PARAMETERS" value="./src/lang/c/test.c" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="lang.c.*" />
@@ -66,7 +64,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestCToken" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="MiniCompilerCondition" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="lang.c.MiniCompilerCondition" />
+      <module name="miniCV00forStudent" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="lang.c.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestCToken" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lang.c.TestCToken" />
       <module name="miniCV00forStudent" />
       <option name="PROGRAM_PARAMETERS" value="./src/lang/c/test.c" />
@@ -80,9 +91,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.TestCToken" />
+      <item itemvalue="Application.MiniCompiler" />
+      <item itemvalue="Application.MiniCompilerCondition" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestCToken" />
+        <item itemvalue="Application.MiniCompilerCondition" />
         <item itemvalue="Application.MiniCompiler" />
         <item itemvalue="Application.MiniCompiler" />
         <item itemvalue="Application.TestCToken" />
@@ -105,7 +132,7 @@
       <workItem from="1636694350738" duration="1598000" />
       <workItem from="1638579631816" duration="15155000" />
       <workItem from="1638756706914" duration="18321000" />
-      <workItem from="1638776201799" duration="1387000" />
+      <workItem from="1638776201799" duration="5106000" />
     </task>
     <servers />
   </component>
