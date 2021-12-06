@@ -36,14 +36,22 @@ public class Array extends CParseRule {
     }
 
     public void semanticCheck(CParseContext pcx) throws FatalErrorException {
-        this.setCType(CType.getCType(CType.T_int));
-        this.setConstant(true);
+        if(expression!=null){
+            expression.semanticCheck(pcx);
+            if(expression.getCType().isCType(CType.T_int)){
+                this.setCType(expression.getCType());
+                this.setConstant(expression.isConstant());
+            }else{
+                pcx.fatalError("[と]の間の式がintではありません");
+            }
+        }
     }
 
     public void codeGen(CParseContext pcx) throws FatalErrorException {
         PrintStream o = pcx.getIOContext().getOutStream();
         o.println(";;; array starts");
         if (expression != null) {
+            expression.codeGen(pcx);
         }
         o.println(";;; array completes");
     }

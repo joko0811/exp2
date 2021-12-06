@@ -23,11 +23,13 @@ public class Ident extends CParseRule{
     public void semanticCheck(CParseContext pcx) throws FatalErrorException {
         String identName=ident.getText();
         if(identName.charAt(0)=='i'){
-           if(identName.substring(1,4).equals("p_")){
+           if(identName.substring(0,2).equals("i_")){
+               this.setCType(CType.getCType(CType.T_int));
+           }else if(identName.substring(1,3).equals("p_")){
                this.setCType(CType.getCType(CType.T_pint));
-           }else if(identName.substring(1,4).equals("a_")){
+           }else if(identName.substring(1,3).equals("a_")){
                this.setCType(CType.getCType(CType.T_aint));
-           }else if(identName.substring(1,5).equals("ipa_")){
+           }else if(identName.substring(1,4).equals("pa_")){
                this.setCType(CType.getCType(CType.T_paint));
            }else{
                this.setCType(CType.getCType(CType.T_int));
@@ -35,6 +37,8 @@ public class Ident extends CParseRule{
         }else if(identName.substring(0,3).equals("c_")){
             this.setCType(CType.getCType(CType.T_int));
             this.setConstant(true);
+        }else{
+
         }
     }
 

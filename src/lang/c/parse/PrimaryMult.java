@@ -28,6 +28,15 @@ public class PrimaryMult extends CParseRule {
     }
 
     public void semanticCheck(CParseContext pcx) throws FatalErrorException {
+        if(variable!=null){
+            variable.semanticCheck(pcx);
+            if(variable.getCType().isCType(CType.T_int)||variable.getCType().isCType(CType.T_aint)){
+                pcx.fatalError("int型の変数やint型の配列はポインタ参照することができません");
+            }else{
+                this.setCType(variable.getCType());
+                this.setConstant(variable.isConstant());
+            }
+        }
     }
 
     public void codeGen(CParseContext pcx) throws FatalErrorException {

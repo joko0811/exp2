@@ -160,7 +160,6 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 				accept = true;
 				break;
 			case 3:					// 数（10進数）の開始
-                //TODO
 				ch = readChar();
 				switch(subState) {
 				case 0:
