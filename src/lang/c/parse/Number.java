@@ -22,7 +22,7 @@ public class Number extends CParseRule {
 
 	public void semanticCheck(CParseContext pcx) throws FatalErrorException {
 		String number = num.getText();
-		if(number.charAt(0)=='0'){
+		if(number.charAt(0)=='0' && number.length()==0){
 			if(number.charAt(1)=='x'){
 				int hex = Integer.decode(number);
 				if(hex<0 || hex>0xffff) {

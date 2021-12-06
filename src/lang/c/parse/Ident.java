@@ -34,7 +34,7 @@ public class Ident extends CParseRule{
            }else{
                this.setCType(CType.getCType(CType.T_int));
            }
-        }else if(identName.substring(0,3).equals("c_")){
+        }else if(identName.substring(0,2).equals("c_")){
             this.setCType(CType.getCType(CType.T_int));
             this.setConstant(true);
         }else{

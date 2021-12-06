@@ -33,7 +33,7 @@ public class PrimaryMult extends CParseRule {
             if(variable.getCType().isCType(CType.T_int)||variable.getCType().isCType(CType.T_aint)){
                 pcx.fatalError("int型の変数やint型の配列はポインタ参照することができません");
             }else{
-                this.setCType(variable.getCType());
+                this.setCType(CType.getCType(CType.T_int));
                 this.setConstant(variable.isConstant());
             }
         }
