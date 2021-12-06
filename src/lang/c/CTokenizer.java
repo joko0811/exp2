@@ -153,6 +153,18 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 					startCol = colNo -1;
 					text.append(ch);
 					state=15;
+				}else if(ch=='<'){
+					startCol = colNo -1;
+					text.append(ch);
+					state=16;
+				}else if(ch=='>'){
+					startCol = colNo -1;
+					text.append(ch);
+					state=17;
+				}else if(ch=='!'){
+					startCol = colNo -1;
+					text.append(ch);
+					state=18;
 				}else{			// ヘンな文字を読んだ
 					startCol = colNo - 1;
 					text.append(ch);
@@ -270,23 +282,65 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 				tk = new CToken(CToken.TK_RBAR, lineNo, startCol, "]");
 				accept = true;
 				break;
-			case 13:
+			case 13: //識別子
 				ch = readChar();
 				if(Character.isLetterOrDigit(ch)||ch=='_'){
 					text.append(ch);
 				}else{
 					backChar(ch);
-					tk = new CToken(CToken.TK_IDENT, lineNo, startCol,text.toString());
+					// 切り出した字句が登録済みキーワードかどうか判定する
+					Integer id = (Integer) rule.get(text.toString());
+					tk = new CToken(((id == null) ? CToken.TK_IDENT : id.intValue()), lineNo, startCol, text.toString());
 					accept = true;
 				}
 			    break;
-			case 14:
-				tk = new CToken(CToken.TK_ASSIGN, lineNo, startCol, "=");
+			case 14: //=
+				ch=readChar();
+				if(ch=='='){
+					text.append(ch);
+					tk = new CToken(CToken.TK_EQ, lineNo, startCol, "==");
+				}else{
+					tk = new CToken(CToken.TK_ASSIGN, lineNo, startCol, "=");
+					backChar(ch);
+				}
 				accept = true;
 				break;
 			case 15:
 				tk = new CToken(CToken.TK_SEMI, lineNo, startCol, ";");
 				accept = true;
+				break;
+			case 16:	// <
+				ch=readChar();
+				if(ch=='='){
+					text.append(ch);
+					tk=new CToken(CToken.TK_LE, lineNo, startCol, "<=");
+				}else{
+					tk=new CToken(CToken.TK_LT, lineNo, startCol, "<");
+					backChar(ch);
+				}
+				accept=true;
+				break;
+			case 17:	// >
+				ch=readChar();
+				if(ch=='='){
+					text.append(ch);
+					tk=new CToken(CToken.TK_GE, lineNo, startCol, ">=");
+				}else{
+					tk=new CToken(CToken.TK_GT, lineNo, startCol, ">");
+					backChar(ch);
+				}
+				accept=true;
+				break;
+			case 18:	// !
+				ch=readChar();
+				if(ch=='='){
+					text.append(ch);
+					tk=new CToken(CToken.TK_NE, lineNo, startCol, "!=");
+				}else{
+					tk = new CToken(CToken.TK_ILL, lineNo, startCol, text.toString());
+					backChar(ch);
+				}
+				accept=true;
 				break;
 			}
 		}
