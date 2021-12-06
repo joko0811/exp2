@@ -57,7 +57,14 @@ public class StatementAssign extends CParseRule {
 
     public void codeGen(CParseContext pcx) throws FatalErrorException {
         PrintStream o = pcx.getIOContext().getOutStream();
-        o.println(";;; program starts");
-        o.println(";;; program completes");
+        o.println(";;; statementAssign starts");
+        primary.codeGen(pcx);
+        expression.codeGen(pcx);
+
+        o.println("\tMOV\t-(R6), R0\t; statementAssign: 左辺、右辺の式を取り出して、右辺の式の値を左辺の式のアドレスに書き込む");
+        o.println("\tMOV\t-(R6), R1\t; statementAssign: ");
+        o.println("\tMOV\tR0, (R1)\t; statementAssign: ");
+
+        o.println(";;; statementAssign completes");
     }
 }

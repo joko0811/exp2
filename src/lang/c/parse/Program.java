@@ -8,7 +8,6 @@ import lang.c.*;
 public class Program extends CParseRule {
 	// program ::= { statement } EOF
     private ArrayList<CParseRule> statementList;
-	private CParseRule program;
 
 	public Program(CParseContext pcx) {
 		statementList =new ArrayList<CParseRule>();
@@ -42,10 +41,13 @@ public class Program extends CParseRule {
 		o.println("\t. = 0x100");
 		o.println("\tJMP\t__START\t; ProgramNode: 最初の実行文へ");
 		// ここには将来、宣言に対するコード生成が必要
-		if (program != null) {
+		if (statementList != null) {
 			o.println("__START:");
 			o.println("\tMOV\t#0x1000, R6\t; ProgramNode: 計算用スタック初期化");
-			program.codeGen(pcx);
+			for(int i=0;i<statementList.size();i++){
+				Statement statement = (Statement) statementList.get(i);
+				statement.codeGen(pcx);
+			}
 			o.println("\tMOV\t-(R6), R0\t; ProgramNode: 計算結果確認用");
 		}
 		o.println("\tHLT\t\t\t; ProgramNode:");

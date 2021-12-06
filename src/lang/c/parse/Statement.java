@@ -19,12 +19,17 @@ public class Statement extends CParseRule {
     }
 
     public void semanticCheck(CParseContext pcx) throws FatalErrorException {
-        statementAssign.semanticCheck(pcx);
+        if(statementAssign!=null){
+            statementAssign.semanticCheck(pcx);
+        }
     }
 
     public void codeGen(CParseContext pcx) throws FatalErrorException {
         PrintStream o = pcx.getIOContext().getOutStream();
-        o.println(";;; program starts");
-        o.println(";;; program completes");
+        o.println(";;; statement starts");
+        if(statementAssign!=null){
+            statementAssign.codeGen(pcx);
+        }
+        o.println(";;; statement completes");
     }
 }
