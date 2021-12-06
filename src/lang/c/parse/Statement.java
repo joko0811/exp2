@@ -19,6 +19,7 @@ public class Statement extends CParseRule {
     }
 
     public void semanticCheck(CParseContext pcx) throws FatalErrorException {
+        statementAssign.semanticCheck(pcx);
     }
 
     public void codeGen(CParseContext pcx) throws FatalErrorException {

@@ -12,7 +12,7 @@ public class StatementAssign extends CParseRule {
     public StatementAssign(CParseContext pcx) {
     }
     public static boolean isFirst(CToken tk) {
-        return Expression.isFirst(tk);
+        return Primary.isFirst(tk);
     }
     public void parse(CParseContext pcx) throws FatalErrorException {
         CTokenizer ct = pcx.getTokenizer();
@@ -42,6 +42,17 @@ public class StatementAssign extends CParseRule {
     }
 
     public void semanticCheck(CParseContext pcx) throws FatalErrorException {
+        if(primary!=null&&expression!=null){
+            primary.semanticCheck(pcx);
+            expression.semanticCheck(pcx);
+            if(primary.getCType()==expression.getCType()){
+                if(primary.isConstant()){
+                    pcx.fatalError("'='の左辺が定数です。定数には代入できません");
+                }
+            }else{
+                pcx.fatalError("'='の左右の式の方は一致している必要があります");
+            }
+        }
     }
 
     public void codeGen(CParseContext pcx) throws FatalErrorException {
