@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="941ba714-978a-43b4-9d7d-7b529cb3ad84" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lang/c/CType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/CType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lang/c/MiniCompiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/MiniCompiler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lang/c/test.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/test.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,17 +89,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.TestCToken" />
       <item itemvalue="Application.MiniCompiler" />
@@ -133,6 +120,8 @@
       <workItem from="1638579631816" duration="15155000" />
       <workItem from="1638756706914" duration="18321000" />
       <workItem from="1638776201799" duration="5106000" />
+      <workItem from="1639360579046" duration="1779000" />
+      <workItem from="1640423882197" duration="329000" />
     </task>
     <servers />
   </component>
