@@ -34,7 +34,7 @@ ident ::= IDENT
 number ::= NUM
 ```
 
-### ex6追加箇所
+### condition
 
 ```
 condition ::= TRUE | FALSE | expression ( conditionLT | conditionLE | conditionGT
@@ -46,6 +46,19 @@ conditionGE ::= GE expression
 conditionEQ ::= EQ expression
 conditionNE ::= NE expression
 （注）LT=’<’, LE=’<=’, GT=’>’, GE=’>=’, EQ=’==’, NE=’!=’
+```
+
+### H7追加箇所
+
+```
+statement ::= statementAssign | statementIf | statementWhile | statementInput | statementOutput
+statementIf ::= IF statementCondition statementExecution  [ stamementElse ]
+statementElse ::= ELSE statementExecution
+statementWhile ::= WHILE statementCondition statementExecution
+statementInput ::= INPUT primary SEMI
+statementOutput ::= OUTPUT expression SEMI
+statementCondition ::= LPAR condition RPAR
+statementExecution ::= LCUR [ { statement } ] RCUR
 ```
 
 ## TODO

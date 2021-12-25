@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="941ba714-978a-43b4-9d7d-7b529cb3ad84" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lang/c/test.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/test.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +45,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="reference.idesettings.debugger.capture" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RunManager" selected="Application.MiniCompilerCondition">
     <configuration name="MiniCompiler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -121,7 +120,7 @@
       <workItem from="1638756706914" duration="18321000" />
       <workItem from="1638776201799" duration="5106000" />
       <workItem from="1639360579046" duration="1779000" />
-      <workItem from="1640423882197" duration="329000" />
+      <workItem from="1640423882197" duration="1891000" />
     </task>
     <servers />
   </component>
