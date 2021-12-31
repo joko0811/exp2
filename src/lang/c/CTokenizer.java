@@ -165,6 +165,14 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 					startCol = colNo -1;
 					text.append(ch);
 					state=18;
+				}else if(ch=='{'){
+					startCol = colNo -1;
+					text.append(ch);
+					state=19;
+				}else if(ch=='}'){
+					startCol = colNo -1;
+					text.append(ch);
+					state=20;
 				}else{			// ヘンな文字を読んだ
 					startCol = colNo - 1;
 					text.append(ch);
@@ -341,6 +349,14 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 					backChar(ch);
 				}
 				accept=true;
+				break;
+			case 19:	// {
+				tk = new CToken(CToken.TK_LCUR, lineNo, startCol, "{");
+				accept = true;
+				break;
+			case 20:	// }
+				tk = new CToken(CToken.TK_RCUR, lineNo, startCol, "}");
+				accept = true;
 				break;
 			}
 		}
