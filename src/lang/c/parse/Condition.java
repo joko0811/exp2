@@ -5,20 +5,25 @@ import lang.*;
 import lang.c.*;
 
 public class Condition extends CParseRule {
-    // condition ::= conditionSimple [conditionNot | conditionAnd | conditionOr]
-    private CParseRule conditionSimple,condition;
+    // condition ::= conditionNot | unsignedCondition
+    private CParseRule condition;
 
     public Condition(CParseContext pcx) {
     }
     public static boolean isFirst(CToken tk) {
-        return ConditionSimple.isFirst(tk);
+        return (ConditionNot.isFirst(tk)||UnsignedCondition.isFirst(tk));
     }
     public void parse(CParseContext pcx) throws FatalErrorException {
         CTokenizer ct = pcx.getTokenizer();
-
-        conditionSimple = new ConditionSimple(pcx);
         CToken tk = ct.getCurrentToken(pcx);
 
+        if(ConditionNot.isFirst(tk)){
+            condition = new ConditionNot(pcx);
+            condition.parse(pcx);
+        }else if(UnsignedCondition.isFirst(tk)){
+            condition = new UnsignedCondition(pcx);
+            condition.parse(pcx);
+        }
     }
 
     public void semanticCheck(CParseContext pcx) throws FatalErrorException {

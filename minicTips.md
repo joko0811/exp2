@@ -69,7 +69,7 @@ conditionGT ::= GT conditionFactor
 conditionGE ::= GE conditionFactor
 conditionEQ ::= EQ conditionFactor
 conditionNE ::= NE conditionFactor
-conditionFactor ::= expression | LPAR condition RPAR
+conditionFactor ::= TRUE | FALSE | expression | LPAR condition RPAR
 ```
 
 ## TODO
