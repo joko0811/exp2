@@ -12,7 +12,14 @@
 
 ```
 program ::= { statement } EOF
-statement ::= statementAssign
+statement ::= statementAssign | statementIfElse | statementWhile | statementInput | statementOutput
+statementIfElse ::= statementIf [ [ { ELSE statementIf } ] [ ELSE statementExecution ] ]
+statementIf ::= IF statementCondition statementExecution
+statementExecution ::= LCUR [ { statement } ] RCUR
+statementWhile ::= WHILE statementCondition statementExecution
+statementInput ::= INPUT primary SEMI
+statementOutput ::= OUTPUT expression SEMI
+statementCondition ::= LPAR condition RPAR
 statementAssign ::= primary ASSIGN expression SEMI
 expression ::= term { expressionAdd | expressionSub }
 expressionAdd ::= PLUS term
@@ -37,8 +44,7 @@ number ::= NUM
 ### condition
 
 ```
-condition ::= TRUE | FALSE | expression ( conditionLT | conditionLE | conditionGT
-| conditionGE | conditionEQ | conditionNE )
+condition ::= TRUE | FALSE | expression ( conditionLT | conditionLE | conditionGT | conditionGE | conditionEQ | conditionNE )
 conditionLT ::= LT expression
 conditionLE ::= LE expression
 conditionGT ::= GT expression
@@ -48,22 +54,15 @@ conditionNE ::= NE expression
 （注）LT=’<’, LE=’<=’, GT=’>’, GE=’>=’, EQ=’==’, NE=’!=’
 ```
 
-### H7追加箇所
+### H8追加箇所
 
 ```
-statement ::= statementAssign | statementIfElse | statementWhile | statementInput | statementOutput
-statementIfElse ::= statementIf [ [ { ELSE statementIf } ] [ ELSE statementExecution ] ]
-statementIf ::= IF statementCondition statementExecution
-statementExecution ::= LCUR [ { statement } ] RCUR
-statementWhile ::= WHILE statementCondition statementExecution
-statementInput ::= INPUT primary SEMI
-statementOutput ::= OUTPUT expression SEMI
-statementCondition ::= LPAR condition RPAR
-
+condition ::= conditionSimple [conditionNot | conditionAnd | conditionOr]
+conditionSimple ::= TRUE | FALSE | expression ( conditionLT | conditionLE | conditionGT | conditionGE | conditionEQ | conditionNE )
+conditionNot ::= NOT conditionSimple
+conditionAnd :: AND conditionSimple
+conditionOr ::= OR conditionSimple
 ```
 
 ## TODO
 
-- ifむずい
-  - [{ELSE}]
-- inputがprimay,outputがexpressionなのはinputは変数のみが対応しているのに対してoutputが足し算などの式に対応しているから
