@@ -11,24 +11,27 @@ public class CToken extends SimpleToken {
 	public static final int TK_LPAR			= 7;				//(
 	public static final int TK_RPAR			= 8;				//)
 	public static final int TK_LBAR			= 9;				//[
-	public static final int TK_RBAR			= 10;				//]
-	public static final int TK_ASSIGN		= 11;				//=
-	public static final int TK_SEMI			= 12;				//;
-	public static final int TK_LT			= 13;				//<
-	public static final int TK_LE			= 14;				//<=
-	public static final int TK_GT			= 15;				//>
-	public static final int TK_GE			= 16;				//>=
-	public static final int TK_EQ			= 17;				//==
-	public static final int TK_NE			= 18;				//!=
-	public static final int TK_TRUE			= 19;				//true
-	public static final int TK_FALSE		= 20;				//false
-	public static final int TK_IF			= 21;				//if
-	public static final int TK_ELSE			= 22;				//else
-	public static final int TK_WHILE		= 23;				//while
-	public static final int TK_INPUT		= 24;				//input
-	public static final int TK_OUTPUT		= 25;				//output
-	public static final int TK_LCUR			= 26;				//{
-	public static final int TK_RCUR			= 27;				//}
+	public static final int TK_LCUR			= 10;				//{
+	public static final int TK_RCUR			= 11;				//}
+	public static final int TK_RBAR			= 12;				//]
+	public static final int TK_ASSIGN		= 13;				//=
+	public static final int TK_SEMI			= 14;				//;
+	public static final int TK_LT			= 15;				//<
+	public static final int TK_LE			= 16;				//<=
+	public static final int TK_GT			= 17;				//>
+	public static final int TK_GE			= 18;				//>=
+	public static final int TK_EQ			= 19;				//==
+	public static final int TK_NE			= 20;				//!=
+	public static final int TK_NOT			= 21;				//!
+	public static final int TK_AND	  		= 22;				//&&
+	public static final int TK_OR	   		= 23;				//||
+	public static final int TK_TRUE			= 24;				//true
+	public static final int TK_FALSE		= 25;				//false
+	public static final int TK_IF			= 26;				//if
+	public static final int TK_ELSE			= 27;				//else
+	public static final int TK_WHILE		= 28;				//while
+	public static final int TK_INPUT		= 29;				//input
+	public static final int TK_OUTPUT		= 30;				//output
 
 	public CToken(int type, int lineNo, int colNo, String s) {
 		super(type, lineNo, colNo, s);

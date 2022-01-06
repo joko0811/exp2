@@ -173,6 +173,10 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 					startCol = colNo -1;
 					text.append(ch);
 					state=20;
+				}else if(ch=='|'){
+					startCol = colNo -1;
+					text.append(ch);
+					state=21;
 				}else{			// ヘンな文字を読んだ
 					startCol = colNo - 1;
 					text.append(ch);
@@ -267,8 +271,15 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 				}
 				break;
 			case 7:					// &を読んだ
-				tk = new CToken(CToken.TK_AMP, lineNo, startCol, "&");
-				accept = true;
+				ch=readChar();
+				if(ch=='&'){
+					text.append(ch);
+					tk=new CToken(CToken.TK_AND, lineNo, startCol, "&&");
+				}else{
+					backChar(ch);
+					tk = new CToken(CToken.TK_AMP, lineNo, startCol, "&");
+				}
+				accept=true;
 				break;
 			case 8:					// *を読んだ
 				tk = new CToken(CToken.TK_MULT, lineNo, startCol, "*");
@@ -345,8 +356,8 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 					text.append(ch);
 					tk=new CToken(CToken.TK_NE, lineNo, startCol, "!=");
 				}else{
-					tk = new CToken(CToken.TK_ILL, lineNo, startCol, text.toString());
 					backChar(ch);
+					tk = new CToken(CToken.TK_NOT, lineNo, startCol, "!");
 				}
 				accept=true;
 				break;
@@ -357,6 +368,17 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 			case 20:	// }
 				tk = new CToken(CToken.TK_RCUR, lineNo, startCol, "}");
 				accept = true;
+				break;
+			case 21:
+				ch=readChar();
+				if(ch=='|'){
+					text.append(ch);
+					tk=new CToken(CToken.TK_OR, lineNo, startCol, "||");
+				}else{
+					backChar(ch);
+					tk = new CToken(CToken.TK_ILL, lineNo, startCol, text.toString());
+				}
+				accept=true;
 				break;
 			}
 		}
