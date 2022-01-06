@@ -57,12 +57,38 @@ conditionNE ::= NE expression
 ### H8追加箇所
 
 ```
-condition ::= conditionSimple [conditionNot | conditionAnd | conditionOr]
-conditionSimple ::= TRUE | FALSE | expression ( conditionLT | conditionLE | conditionGT | conditionGE | conditionEQ | conditionNE )
-conditionNot ::= NOT conditionSimple
-conditionAnd :: AND conditionSimple
-conditionOr ::= OR conditionSimple
+condition ::= conditionNot | unsignedCondition
+conditionNot ::= NOT unsignedCondition
+unsignedCondition ::= conditionTerm {conditionAnd | conditionOr}
+conditionAnd :: AND conditionTerm
+conditionOr ::= OR conditionTerm
+conditionTerm ::= conditionFactor {conditionLT | conditionLE | conditionGT | conditionGE | conditionEQ | conditionNE} 
+conditionLT ::= LT conditionFactor
+conditionLE ::= LE conditionFactor
+conditionGT ::= GT conditionFactor
+conditionGE ::= GE conditionFactor
+conditionEQ ::= EQ conditionFactor
+conditionNE ::= NE conditionFactor
+conditionFactor ::= expression | LPAR condition RPAR
 ```
 
 ## TODO
+
+```
+program ::= expression
+expression ::= term { expressionAdd | expressionSub }
+expressionAdd ::= PLUS term
+expressionSub ::= MINUS term
+term ::= factor { termMult | termDiv }
+termMult ::= MULT factor
+termDiv ::= DIV factor
+factor ::= plusFactor | minusFactor | unsignedFactor
+plusFactor ::= PLUS unsignedFactor
+minusFactor ::= MINUS unsignedFactor
+unsignedFactor ::= factorAmp | number | LPAR expression RPAR
+factorAmp ::= AMP number
+number ::= NUM
+```
+
+
 

@@ -1,21 +1,31 @@
 package lang.c.parse;
 
-import java.io.PrintStream;
 import lang.*;
 import lang.c.*;
 
 public class ConditionOr extends CParseRule{
     // conditionOr ::= OR conditionSimple
-    private CParseRule condition;
+    private CParseRule left,right;
     private CToken op;
 
-    public ConditionOr(){}
+    public ConditionOr(CParseRule left){
+        this.left=left;
+    }
     public static boolean isFirst(CToken tk) {
         return tk.getType()==CToken.TK_OR;
     }
 
     public void parse(CParseContext pcx) throws FatalErrorException {
+        CTokenizer ct = pcx.getTokenizer();
 
+        op = ct.getCurrentToken(pcx);
+        CToken tk = ct.getNextToken(pcx);
+        if(ConditionSimple.isFirst(tk)){
+            right = new ConditionSimple(pcx);
+            right.parse(pcx);
+        }else{
+            pcx.fatalError(tk.toExplainString()+"\"||\"の後はconditionです");
+        }
     }
 
     public void semanticCheck(CParseContext pcx) throws FatalErrorException {

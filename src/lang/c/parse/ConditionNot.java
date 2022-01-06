@@ -15,7 +15,16 @@ public class ConditionNot extends CParseRule{
     }
 
     public void parse(CParseContext pcx) throws FatalErrorException {
+        CTokenizer ct = pcx.getTokenizer();
 
+        op = ct.getCurrentToken(pcx);
+        CToken tk = ct.getNextToken(pcx);
+        if(ConditionSimple.isFirst(tk)){
+            condition = new ConditionSimple(pcx);
+            condition.parse(pcx);
+        }else{
+            pcx.fatalError(tk.toExplainString()+"\"!\"の後はconditionです");
+        }
     }
 
     public void semanticCheck(CParseContext pcx) throws FatalErrorException {
