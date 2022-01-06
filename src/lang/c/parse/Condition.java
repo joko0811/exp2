@@ -5,57 +5,23 @@ import lang.*;
 import lang.c.*;
 
 public class Condition extends CParseRule {
-    // condition ::= TRUE | FALSE | expression ( conditionLT | conditionLE | conditionGT | conditionGE | conditionEQ | conditionNE )
-    private CParseRule expression,condition;
-    private boolean flag;
+    // condition ::= conditionSimple [conditionNot | conditionAnd | conditionOr]
+    private CParseRule conditionSimple,condition;
 
     public Condition(CParseContext pcx) {
     }
     public static boolean isFirst(CToken tk) {
-        return (Expression.isFirst(tk) | tk.getType() == CToken.TK_TRUE | tk.getType() == CToken.TK_FALSE);
+        return ConditionSimple.isFirst(tk);
     }
     public void parse(CParseContext pcx) throws FatalErrorException {
         CTokenizer ct = pcx.getTokenizer();
+
+        conditionSimple = new ConditionSimple(pcx);
         CToken tk = ct.getCurrentToken(pcx);
 
-        if (Expression.isFirst(tk)) {
-            expression = new Expression(pcx);
-            expression.parse(pcx);
-            tk = ct.getCurrentToken(pcx);
-            if (ConditionLT.isFirst(tk)) {
-                condition = new ConditionLT(pcx,expression);
-                condition.parse(pcx);
-            } else if (ConditionLE.isFirst(tk)) {
-                condition = new ConditionLE(pcx,expression);
-                condition.parse(pcx);
-            } else if (ConditionGT.isFirst(tk)) {
-                condition = new ConditionGT(pcx,expression);
-                condition.parse(pcx);
-            } else if (ConditionGE.isFirst(tk)) {
-                condition = new ConditionGE(pcx,expression);
-                condition.parse(pcx);
-            } else if (ConditionEQ.isFirst(tk)) {
-                condition = new ConditionEQ(pcx,expression);
-                condition.parse(pcx);
-            } else if (ConditionNE.isFirst(tk)) {
-                condition = new ConditionNE(pcx,expression);
-                condition.parse(pcx);
-            } else {
-                pcx.fatalError(tk.toExplainString() + " expressionの後には比較演算子が必要です");
-            }
-        } else if (tk.getType() == CToken.TK_TRUE) {
-            flag = true;
-            tk = ct.getNextToken(pcx);
-        } else if (tk.getType() == CToken.TK_FALSE) {
-            flag = false;
-            tk = ct.getNextToken(pcx);
-        }
     }
 
     public void semanticCheck(CParseContext pcx) throws FatalErrorException {
-        if(expression!=null){
-            expression.semanticCheck(pcx);
-        }
         if(condition!=null){
             condition.semanticCheck(pcx);
         }
@@ -66,12 +32,6 @@ public class Condition extends CParseRule {
         o.println(";;; condition starts");
         if (condition != null) {
             condition.codeGen(pcx);
-        }else{
-            if(flag){
-                o.println("\tMOV\t#0x0001, (R6)+\t; Condition: true(1)をスタックに積む");
-            }else{
-                o.println("\tMOV\t#0x0000, (R6)+\t; Condition: false(0)をスタックに積む");
-            }
         }
         o.println(";;; condition completes");
     }

@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="941ba714-978a-43b4-9d7d-7b529cb3ad84" name="Default Changelist" comment="Default Changelist">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minicTips.md" beforeDir="false" afterPath="$PROJECT_DIR$/minicTips.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/CToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/CToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/CTokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/CTokenizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/Condition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/Condition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/test.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/test.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +45,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="20nZNfh6vygeY3P32pZQHMLpAko" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -62,7 +68,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
-  <component name="RunManager" selected="アプリケーション.MiniCompiler">
+  <component name="RunManager" selected="アプリケーション.TestCToken">
     <configuration name="MiniCompiler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lang.c.MiniCompiler" />
       <module name="miniCV00forStudent" />
@@ -147,7 +153,7 @@
       <workItem from="1641351020585" duration="105000" />
       <workItem from="1641351150184" duration="9753000" />
       <workItem from="1641431898978" duration="7301000" />
-      <workItem from="1641455733220" duration="1221000" />
+      <workItem from="1641455733220" duration="3010000" />
     </task>
     <servers />
   </component>
