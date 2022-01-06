@@ -51,14 +51,19 @@ conditionNE ::= NE expression
 ### H7追加箇所
 
 ```
-statement ::= statementAssign | statementIf | statementWhile | statementInput | statementOutput
-statementIf ::= IF statementCondition statementExecution  [ stamementElse ]
-statementElse ::= ELSE statementExecution
+statement ::= statementAssign | statementIfElse | statementWhile | statementInput | statementOutput
+statementIfElse ::= statementIf [ [ { ELSE statementIf } ] [ ELSE statementExecution ] ]
+statementIf ::= IF statementCondition statementExecution
+statementExecution ::= LCUR [ { statement } ] RCUR
 statementWhile ::= WHILE statementCondition statementExecution
 statementInput ::= INPUT primary SEMI
 statementOutput ::= OUTPUT expression SEMI
 statementCondition ::= LPAR condition RPAR
-statementExecution ::= LCUR [ { statement } ] RCUR
+
 ```
 
 ## TODO
+
+- ifむずい
+  - [{ELSE}]
+- inputがprimay,outputがexpressionなのはinputは変数のみが対応しているのに対してoutputが足し算などの式に対応しているから
