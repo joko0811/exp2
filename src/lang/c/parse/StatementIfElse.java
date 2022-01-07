@@ -93,9 +93,9 @@ public class StatementIfElse extends CParseRule {
                 }
             }
 
+            tagnum++;
             o.println("ELSE" + seq + "_" + tagnum + ":\t\t\t\t; statementIfElse:");
             if(statementExecution!=null){
-                tagnum++;
                 statementExecution.codeGen(pcx);
             }
             o.println("ENDIF" + seq + ":\t\t\t\t; statementIfElse:");
