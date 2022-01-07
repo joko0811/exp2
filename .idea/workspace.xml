@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="941ba714-978a-43b4-9d7d-7b529cb3ad84" name="Default Changelist" comment="Default Changelist">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/ConditionAnd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/ConditionAnd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/ConditionOr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/ConditionOr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/ConditionNot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/ConditionNot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/ConditionTerm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/ConditionTerm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/Term.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/Term.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/UnsignedCondition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/UnsignedCondition.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

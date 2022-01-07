@@ -1,5 +1,7 @@
 package lang.c.parse;
 
+import java.io.PrintStream;
+
 import lang.*;
 import lang.c.*;
 
@@ -39,6 +41,12 @@ public class ConditionNot extends CParseRule{
     }
 
     public void codeGen(CParseContext pcx) throws FatalErrorException {
-
+        PrintStream o = pcx.getIOContext().getOutStream();
+        if (condition != null) {
+            condition.codeGen(pcx);
+            o.println("\tMOV\t-(R6), R0\t; ExpressionNot: 数を取り出して、否定をとり、積む<" + op.toString() + ">");
+            o.println("\tXOR\t#0x0001, R0\t; ExpressionNot:");
+            o.println("\tMOV\tR0, (R6)+\t; ExpressionNot:");
+        }
     }
 }

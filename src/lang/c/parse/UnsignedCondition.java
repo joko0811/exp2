@@ -1,59 +1,53 @@
 package lang.c.parse;
 
 import java.io.PrintStream;
-import java.util.ArrayList;
 
 import lang.*;
 import lang.c.*;
 
 public class UnsignedCondition extends CParseRule{
     // unsignedCondition ::= conditionTerm {conditionAnd | conditionOr}
-    private CParseRule conditionTerm;
-    private ArrayList<CParseRule> conditionList;
+    private CParseRule unsignedCondition;
 
-    public UnsignedCondition(CParseContext pcx){
-        conditionList = new ArrayList<CParseRule>();
-    }
+    public UnsignedCondition(CParseContext pcx){}
     public static boolean isFirst(CToken tk) {
         return ConditionTerm.isFirst(tk);
     }
 
     public void parse(CParseContext pcx) throws FatalErrorException {
-        CTokenizer ct = pcx.getTokenizer();
-
+        CParseRule conditionTerm=null, list=null;
         conditionTerm = new ConditionTerm(pcx);
         conditionTerm.parse(pcx);
+        CTokenizer ct = pcx.getTokenizer();
         CToken tk = ct.getCurrentToken(pcx);
-
-        while(true){
-            CParseRule condition;
+        while(ConditionAnd.isFirst(tk)||ConditionOr.isFirst(tk)){
             if(ConditionAnd.isFirst(tk)){
-                condition = new ConditionAnd(pcx,conditionTerm);
-                condition.parse(pcx);
-                conditionList.add(condition);
+                list = new ConditionAnd(pcx,conditionTerm);
+                list.parse(pcx);
+                conditionTerm = list;
+                tk=ct.getCurrentToken(pcx);
             }else if(ConditionOr.isFirst(tk)){
-                condition = new ConditionOr(pcx,conditionTerm);
-                condition.parse(pcx);
-                conditionList.add(condition);
-            }else{
-                break;
+                list = new ConditionOr(pcx,conditionTerm);
+                list.parse(pcx);
+                conditionTerm = list;
+                tk=ct.getCurrentToken(pcx);
             }
-            tk=ct.getCurrentToken(pcx);
         }
+        unsignedCondition = conditionTerm;
     }
 
     public void semanticCheck(CParseContext pcx) throws FatalErrorException {
-        if(conditionTerm!=null){
-            conditionTerm.semanticCheck(pcx);
-            setCType(conditionTerm.getCType());
-            setConstant(conditionTerm.isConstant());
-            for(int i=0;i<conditionList.size();i++){
-                conditionList.get(i).semanticCheck(pcx);
-            }
+        if (unsignedCondition!=null){
+            unsignedCondition.semanticCheck(pcx);
+            this.setCType(unsignedCondition.getCType());
+            this.setConstant(unsignedCondition.isConstant());
         }
     }
 
     public void codeGen(CParseContext pcx) throws FatalErrorException {
-
+        PrintStream o = pcx.getIOContext().getOutStream();
+        o.println(";;; unsignedCondition starts");
+        if (unsignedCondition != null) { unsignedCondition.codeGen(pcx); }
+        o.println(";;; unsignedCondition completes");
     }
 }

@@ -1,7 +1,6 @@
 package lang.c.parse;
 
 import java.io.PrintStream;
-import java.util.ArrayList;
 
 import lang.*;
 import lang.c.*;

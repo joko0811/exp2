@@ -1,5 +1,7 @@
 package lang.c.parse;
 
+import java.io.PrintStream;
+
 import lang.*;
 import lang.c.*;
 
@@ -54,6 +56,9 @@ public class ConditionFactor extends CParseRule{
     }
 
     public void codeGen(CParseContext pcx) throws FatalErrorException {
-
+        PrintStream o = pcx.getIOContext().getOutStream();
+        o.println(";;; conditionFactor starts");
+        if (conditionFactor != null) { conditionFactor.codeGen(pcx); }
+        o.println(";;; conditionFactor completes");
     }
 }
