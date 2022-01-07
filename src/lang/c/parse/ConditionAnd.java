@@ -29,7 +29,18 @@ public class ConditionAnd extends CParseRule{
     }
 
     public void semanticCheck(CParseContext pcx) throws FatalErrorException {
-
+        if(left!=null&&right!=null){
+            left.semanticCheck(pcx);
+            right.semanticCheck(pcx);
+            setCType(right.getCType());
+            setConstant(right.isConstant());
+            if(left.getCType().getType()!=CType.T_bool){
+                pcx.fatalError(left.toString()+"andの左辺がbool値ではありません");
+            }
+            if(right.getCType().getType()!=CType.T_bool){
+                pcx.fatalError(right.toString()+"andの右辺がbool値ではありません");
+            }
+        }
     }
 
     public void codeGen(CParseContext pcx) throws FatalErrorException {

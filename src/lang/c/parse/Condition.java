@@ -29,6 +29,8 @@ public class Condition extends CParseRule {
     public void semanticCheck(CParseContext pcx) throws FatalErrorException {
         if(condition!=null){
             condition.semanticCheck(pcx);
+            setCType(condition.getCType());
+            setConstant(condition.isConstant());
         }
     }
 

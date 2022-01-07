@@ -48,7 +48,9 @@ public class ConditionFactor extends CParseRule{
     }
 
     public void semanticCheck(CParseContext pcx) throws FatalErrorException {
-
+        if(conditionFactor!=null){
+            conditionFactor.semanticCheck(pcx);
+        }
     }
 
     public void codeGen(CParseContext pcx) throws FatalErrorException {

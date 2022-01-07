@@ -27,7 +27,15 @@ public class ConditionNot extends CParseRule{
     }
 
     public void semanticCheck(CParseContext pcx) throws FatalErrorException {
-
+        if(condition!=null){
+            condition.semanticCheck(pcx);
+            if(condition.getCType().getType()==CType.T_bool){
+                setCType(condition.getCType());
+                setConstant(condition.isConstant());
+            }else{
+                pcx.fatalError(condition.toString()+"\"!\"の右辺はbool値である必要があります");
+            }
+        }
     }
 
     public void codeGen(CParseContext pcx) throws FatalErrorException {
