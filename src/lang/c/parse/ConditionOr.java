@@ -1,5 +1,7 @@
 package lang.c.parse;
 
+import java.io.PrintStream;
+
 import lang.*;
 import lang.c.*;
 
@@ -44,6 +46,14 @@ public class ConditionOr extends CParseRule{
     }
 
     public void codeGen(CParseContext pcx) throws FatalErrorException {
-
+        PrintStream o = pcx.getIOContext().getOutStream();
+        if (left != null && right != null) {
+            left.codeGen(pcx);		// 左部分木のコード生成を頼む
+            right.codeGen(pcx);		// 右部分木のコード生成を頼む
+            o.println("\tMOV\t-(R6), R0\t; ConditionOr: ２数を取り出して、論理和をとり、積む<" + op.toString() + ">");
+            o.println("\tMOV\t-(R6), R1\t; ConditionOr:");
+            o.println("\tOR\tR1, R0\t; ConditionOr:");
+            o.println("\tMOV\tR0, (R6)+\t; ConditionOr:");
+        }
     }
 }
