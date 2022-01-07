@@ -52,13 +52,26 @@ public class ConditionFactor extends CParseRule{
     public void semanticCheck(CParseContext pcx) throws FatalErrorException {
         if(conditionFactor!=null){
             conditionFactor.semanticCheck(pcx);
+            this.setCType(conditionFactor.getCType());
+            this.setConstant(conditionFactor.isConstant());
+        }else{ //true/falseの時
+            this.setCType(CType.getCType(CType.T_bool));
+            this.setConstant(true);
         }
     }
 
     public void codeGen(CParseContext pcx) throws FatalErrorException {
         PrintStream o = pcx.getIOContext().getOutStream();
         o.println(";;; conditionFactor starts");
-        if (conditionFactor != null) { conditionFactor.codeGen(pcx); }
+        if (conditionFactor != null) {
+            conditionFactor.codeGen(pcx);
+        }else{
+            if(flag){
+                o.println("\tMOV\t#0x0001, (R6)+\t; Condition: true(1)をスタックに積む");
+            }else{
+                o.println("\tMOV\t#0x0000, (R6)+\t; Condition: false(0)をスタックに積む");
+            }
+        }
         o.println(";;; conditionFactor completes");
     }
 }

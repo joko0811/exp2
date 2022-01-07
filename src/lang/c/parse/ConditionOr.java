@@ -6,7 +6,7 @@ import lang.*;
 import lang.c.*;
 
 public class ConditionOr extends CParseRule{
-    // conditionOr ::= OR conditionSimple
+    // conditionOr ::= OR conditionTerm
     private CParseRule left,right;
     private CToken op;
 
