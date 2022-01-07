@@ -8,60 +8,48 @@ import lang.c.*;
 
 public class Term extends CParseRule {
 	// term ::= factor { termMult | termDiv }
-	private CParseRule factor;
-	private ArrayList<CParseRule> termList;
+	private CParseRule term;
 
 	public Term(CParseContext pcx) {
-		termList = new ArrayList<CParseRule>();
 	}
 	public static boolean isFirst(CToken tk) {
 		return Factor.isFirst(tk);
 	}
 
 	public void parse(CParseContext pcx) throws FatalErrorException {
-		CTokenizer ct = pcx.getTokenizer();
-
-		factor = new Term(pcx);
+		CParseRule factor = null, list = null;
+		factor = new Factor(pcx);
 		factor.parse(pcx);
+		CTokenizer ct = pcx.getTokenizer();
 		CToken tk = ct.getCurrentToken(pcx);
-
-		while (true) {
-			CParseRule list;
-			if(ExpressionAdd.isFirst(tk)) {
-				list = new ExpressionAdd(pcx, factor);
+		while (TermMult.isFirst(tk) || TermDiv.isFirst(tk)) {
+			if(TermMult.isFirst(tk)) {
+				list = new TermMult(pcx, factor);
 				list.parse(pcx);
-				termList.add(list);
-			}else if(ExpressionSub.isFirst(tk)) {
-				list = new ExpressionSub(pcx, factor);
+				factor = list;
+				tk = ct.getCurrentToken(pcx);
+			} else if(TermDiv.isFirst(tk)) {
+				list = new TermDiv(pcx, factor);
 				list.parse(pcx);
-				termList.add(list);
-			}else {
-				break;
+				factor = list;
+				tk = ct.getCurrentToken(pcx);
 			}
-			tk = ct.getCurrentToken(pcx);
 		}
+		term = factor;
 	}
 
 	public void semanticCheck(CParseContext pcx) throws FatalErrorException {
-		if (factor != null) {
-			factor.semanticCheck(pcx);
-			this.setCType(factor.getCType());		// term の型をそのままコピー
-			this.setConstant(factor.isConstant());
-			for(int i = 0; i< termList.size(); i++){
-				termList.get(i).semanticCheck(pcx);
-			}
+		if (term != null) {
+			term.semanticCheck(pcx);
+			this.setCType(term.getCType());		// factor の型をそのままコピー
+			this.setConstant(term.isConstant());
 		}
 	}
 
 	public void codeGen(CParseContext pcx) throws FatalErrorException {
 		PrintStream o = pcx.getIOContext().getOutStream();
 		o.println(";;; term starts");
-		if (factor != null){
-			factor.codeGen(pcx);
-			for(int i = 0; i< termList.size(); i++){
-				termList.get(i).semanticCheck(pcx);
-			}
-		}
+		if (term != null) { term.codeGen(pcx); }
 		o.println(";;; term completes");
 	}
 }

@@ -8,59 +8,47 @@ import lang.c.*;
 
 public class Expression extends CParseRule {
 	// expression ::= term { expressionAdd | expressionSub }
-	private CParseRule term;
-	private ArrayList<CParseRule> expressionList;
+	private CParseRule expression;
 
 	public Expression(CParseContext pcx) {
-		expressionList = new ArrayList<CParseRule>();
 	}
 	public static boolean isFirst(CToken tk) {
 		return Term.isFirst(tk);
 	}
 	public void parse(CParseContext pcx) throws FatalErrorException {
-		CTokenizer ct = pcx.getTokenizer();
-
+		CParseRule term = null, list = null;
 		term = new Term(pcx);
 		term.parse(pcx);
+		CTokenizer ct = pcx.getTokenizer();
 		CToken tk = ct.getCurrentToken(pcx);
-
-		while (true) {
-			CParseRule list;
+		while (ExpressionAdd.isFirst(tk) || ExpressionSub.isFirst(tk)) {
 			if(ExpressionAdd.isFirst(tk)) {
 				list = new ExpressionAdd(pcx, term);
 				list.parse(pcx);
-				expressionList.add(list);
-			}else if(ExpressionSub.isFirst(tk)) {
+				term = list;
+				tk = ct.getCurrentToken(pcx);
+			} else if(ExpressionSub.isFirst(tk)) {
 				list = new ExpressionSub(pcx, term);
 				list.parse(pcx);
-				expressionList.add(list);
-			}else {
-				break;
+				term = list;
+				tk = ct.getCurrentToken(pcx);
 			}
-			tk = ct.getCurrentToken(pcx);
 		}
+		expression = term;
 	}
 
 	public void semanticCheck(CParseContext pcx) throws FatalErrorException {
-		if (term != null) {
-			term.semanticCheck(pcx);
-			this.setCType(term.getCType());		// expression の型をそのままコピー
-			this.setConstant(term.isConstant());
-			for(int i = 0; i< expressionList.size(); i++){
-				expressionList.get(i).semanticCheck(pcx);
-			}
+		if (expression != null) {
+			expression.semanticCheck(pcx);
+			this.setCType(expression.getCType());		// expression の型をそのままコピー
+			this.setConstant(expression.isConstant());
 		}
 	}
 
 	public void codeGen(CParseContext pcx) throws FatalErrorException {
 		PrintStream o = pcx.getIOContext().getOutStream();
 		o.println(";;; expression starts");
-		if (term != null){
-			term.codeGen(pcx);
-			for(int i = 0; i< expressionList.size(); i++){
-				expressionList.get(i).semanticCheck(pcx);
-			}
-		}
+		if (expression != null) expression.codeGen(pcx);
 		o.println(";;; expression completes");
 	}
 }
