@@ -16,28 +16,30 @@ public class StatementAssign extends CParseRule {
     }
     public void parse(CParseContext pcx) throws FatalErrorException {
         CTokenizer ct = pcx.getTokenizer();
-        CToken tk = ct.getCurrentToken(pcx);
+        CToken tk;
         primary=new Primary(pcx);
         primary.parse(pcx);
         tk=ct.getCurrentToken(pcx);
-        if(tk.getType()==CToken.TK_ASSIGN){
+
+        if(tk.getType()==CToken.TK_ASSIGN) {
             assign=tk;
             tk=ct.getNextToken(pcx);
-            if(Expression.isFirst(tk)){
-                expression=new Expression(pcx);
-                expression.parse(pcx);
-                tk=ct.getCurrentToken(pcx);
-                if(tk.getType()==CToken.TK_SEMI){
-                    semi=tk;
-                    tk=ct.getNextToken(pcx);
-                }else{
-                    pcx.fatalError(tk.toExplainString()+"行末に';'がありません");
-                }
+        }else{
+            pcx.warning(tk.toExplainString()+"左辺の後に'='がないため補いました");
+        }
+
+        if(Expression.isFirst(tk)){
+            expression=new Expression(pcx);
+            expression.parse(pcx);
+            tk=ct.getCurrentToken(pcx);
+            if(tk.getType()==CToken.TK_SEMI){
+                semi=tk;
+                tk=ct.getNextToken(pcx);
             }else{
-                pcx.fatalError(tk.toExplainString()+"'='の後に右辺がありません");
+                pcx.warning(tk.toExplainString()+"行に\";\"がないため補いました");
             }
         }else{
-            pcx.fatalError(tk.toExplainString()+"左辺の後に'='がありません");
+            pcx.recoverableError(tk.toExplainString()+"'='の後に右辺がありません");
         }
     }
 
@@ -47,10 +49,10 @@ public class StatementAssign extends CParseRule {
             expression.semanticCheck(pcx);
             if(primary.getCType()==expression.getCType()){
                 if(primary.isConstant()){
-                    pcx.fatalError("'='の左辺が定数です。定数には代入できません");
+                    pcx.warning("'='の左辺が定数です。定数には代入できません");
                 }
             }else{
-                pcx.fatalError("'='の左右の式の方は一致している必要があります");
+                pcx.warning("'='の左右の式の方は一致している必要があります");
             }
         }
     }

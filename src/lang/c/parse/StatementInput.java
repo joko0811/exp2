@@ -20,18 +20,23 @@ public class StatementInput extends CParseRule {
 
         CToken tk = ct.getNextToken(pcx);
         if(Primary.isFirst(tk)){
-            primary = new Primary(pcx);
-            primary.parse(pcx);
+            try{
+                primary = new Primary(pcx);
+                primary.parse(pcx);
+            }catch(RecoverableErrorException e){
+                tk = ct.skipTo(pcx,CToken.TK_SEMI);
+                pcx.info(tk.toExplainString()+tk.toString()+"まで構文解析をスキップしました");
+            }
 
             tk = ct.getCurrentToken(pcx);
             if(tk.getType()==CToken.TK_SEMI){
                 semi=tk;
                 tk=ct.getNextToken(pcx);
             }else{
-               pcx.fatalError(tk.toExplainString()+"inputの行にセミコロンがありません");
+               pcx.warning(tk.toExplainString()+"inputの行に\";\"がないため補いました");
             }
         }else{
-            pcx.fatalError(tk.toExplainString()+"inputの後にprimaryがありません");
+            pcx.recoverableError(tk.toExplainString()+"inputの後にprimaryがありません");
         }
 
     }
@@ -41,7 +46,7 @@ public class StatementInput extends CParseRule {
             primary.semanticCheck(pcx);
             this.setCType(primary.getCType());
             if(primary.isConstant() == true) {
-                pcx.fatalError("定数は読み込めません");
+                pcx.warning("定数は読み込めません");
             } else {
                 setConstant(primary.isConstant());
             }

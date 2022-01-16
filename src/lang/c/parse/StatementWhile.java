@@ -30,10 +30,10 @@ public class StatementWhile extends CParseRule {
                 statementExecution = new StatementExecution(pcx);
                 statementExecution.parse(pcx);
             }else{
-                pcx.fatalError(tk.toExplainString()+"whileの実行文がありません");
+                pcx.recoverableError(tk.toExplainString()+"whileの実行文がありません");
             }
         }else{
-            pcx.fatalError(tk.toExplainString()+"whileの条件文がありません");
+            pcx.recoverableError(tk.toExplainString()+"whileの条件文がありません");
         }
 
     }

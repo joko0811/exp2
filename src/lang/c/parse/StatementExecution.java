@@ -33,7 +33,7 @@ public class StatementExecution extends CParseRule {
             rcur =tk;
             tk = ct.getNextToken(pcx);
         }else{
-            pcx.fatalError(tk.toExplainString()+"実行文の後に\"}\"がありません");
+            pcx.warning(tk.toExplainString()+"実行文の後に\"}\"がないためスキップしました");
         }
 
     }

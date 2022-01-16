@@ -19,13 +19,18 @@ public class Program extends CParseRule {
 		CTokenizer ct = pcx.getTokenizer();
 		CToken tk = ct.getCurrentToken(pcx);
 		while(Statement.isFirst(tk)){
-			CParseRule statement = new Statement(pcx);
-			statement.parse(pcx);
-			statementList.add(statement);
-			tk=ct.getCurrentToken(pcx);
+			try{
+				CParseRule statement = new Statement(pcx);
+				statement.parse(pcx);
+				statementList.add(statement);
+				tk=ct.getCurrentToken(pcx);
+			}catch(RecoverableErrorException e){
+				tk = ct.skipTo(pcx, CToken.TK_EOF);
+				pcx.info(tk.toExplainString()+tk.toString()+"まで構文解析をスキップしました");
+			}
 		}
 		if (tk.getType() != CToken.TK_EOF) {
-			pcx.fatalError(tk.toExplainString() + "プログラムの最後にゴミがあります");
+			pcx.warning(tk.toExplainString() + "プログラムの最後にゴミがあります");
 		}
 	}
 

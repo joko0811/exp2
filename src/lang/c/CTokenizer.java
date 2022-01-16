@@ -59,6 +59,21 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 //		System.out.println("Token='" + currentTk.toString());
 		return currentTk;
 	}
+	public CToken skipTo(CParseContext pcx,int... tkNum){
+		CTokenizer ct = pcx.getTokenizer();
+		CToken nextToken = null;
+		boolean findFlag=false;
+		while(!findFlag){
+			nextToken = ct.getNextToken(pcx);
+			for(int i=0;i<tkNum.length;i++){
+				if(tkNum[i]==nextToken.getType()){
+					findFlag=true;
+					break;
+				}
+			}
+		}
+		return nextToken;
+	}
 	private CToken readToken() {
 		CToken tk = null;
 		char ch;

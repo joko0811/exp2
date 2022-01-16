@@ -28,10 +28,10 @@ public class StatementCondition extends CParseRule {
                 rpar = tk;
                 tk = ct.getNextToken(pcx);
             }else{
-                pcx.fatalError(tk.toExplainString()+"条件の後に\")\"がありません");
+                pcx.warning(tk.toExplainString()+"条件の後に\")\"がないためスキップしました");
             }
         }else{
-            pcx.fatalError(tk.toExplainString()+"\"(\"の後に条件がありません");
+            pcx.recoverableError(tk.toExplainString()+"\"(\"の後に条件がありません");
         }
 
     }

@@ -20,18 +20,23 @@ public class StatementOutput extends CParseRule {
 
         CToken tk = ct.getNextToken(pcx);
         if(Expression.isFirst(tk)){
-            expression = new Expression(pcx);
-            expression.parse(pcx);
+            try{
+                expression = new Expression(pcx);
+                expression.parse(pcx);
+            }catch(RecoverableErrorException e){
+                tk = ct.skipTo(pcx,CToken.TK_SEMI);
+                pcx.info(tk.toExplainString()+tk.toString()+"まで構文解析をスキップしました");
+            }
 
             tk = ct.getCurrentToken(pcx);
             if(tk.getType()==CToken.TK_SEMI){
                 semi=tk;
                 tk=ct.getNextToken(pcx);
             }else{
-                pcx.fatalError(tk.toExplainString()+"outputの行にセミコロンがありません");
+                pcx.warning(tk.toExplainString()+"outputの行に\";\"がないため補いました");
             }
         }else{
-            pcx.fatalError(tk.toExplainString()+"outputの後にexpressionがありません");
+            pcx.recoverableError(tk.toExplainString()+"outputの後にexpressionがありません");
         }
 
     }

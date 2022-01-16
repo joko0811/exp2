@@ -46,15 +46,21 @@ public abstract class ParseContext {
 		message(s);
 		++errorNo;
 	}
+	public void info(final String s){
+		message(s);
+	}
+	// 警告（回復できる些細な誤り）
+	public void warning(final String s) {
+		message(s);
+		++warningNo;
+	}
 	// 本当に致命的な場合は例外を投げる
 	public void fatalError(final String s) throws FatalErrorException {
 		error(s);
 		throw new FatalErrorException();
 	}
-
-	// 警告（回復できる些細な誤り）
-	public void warning(final String s) {
-		message(s);
-		++warningNo;
+	public void recoverableError(final String s) throws RecoverableErrorException {
+		error(s);
+		throw new RecoverableErrorException();
 	}
 }

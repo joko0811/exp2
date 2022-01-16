@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="941ba714-978a-43b4-9d7d-7b529cb3ad84" name="Default Changelist" comment="Default Changelist" />
+    <list default="true" id="941ba714-978a-43b4-9d7d-7b529cb3ad84" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/ParseContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/ParseContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/CTokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/CTokenizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/Statement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/Statement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/StatementAssign.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/StatementAssign.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/StatementCondition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/StatementCondition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/StatementExecution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/StatementExecution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/StatementIfElse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/StatementIfElse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/StatementInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/StatementInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/StatementOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/StatementOutput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/StatementWhile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/StatementWhile.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,15 +38,23 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementExecution.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementIf.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementWhile.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/lang/c/test.c" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementOutput.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementIf.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/TermDiv.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementInput.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementCondition.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/TermDiv.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementWhile.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -61,6 +82,11 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="terminal" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="lang" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.MiniCompiler">
     <configuration name="MiniCompiler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -149,6 +175,7 @@
       <workItem from="1641431898978" duration="7301000" />
       <workItem from="1641455733220" duration="9720000" />
       <workItem from="1641517430645" duration="6979000" />
+      <workItem from="1642315539813" duration="10209000" />
     </task>
     <servers />
   </component>
@@ -177,7 +204,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

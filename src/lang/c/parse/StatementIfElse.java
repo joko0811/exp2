@@ -45,10 +45,10 @@ public class StatementIfElse extends CParseRule {
                     tk = ct.getCurrentToken(pcx);
                     elseflag = true;
                 }else{
-                    pcx.fatalError(tk.toExplainString()+"if構文中に一つ以上のelse句は記述できません");
+                    pcx.warning(tk.toExplainString()+"if構文中に一つ以上のelse句は記述できないためスキップしました");
                 }
             }else{
-                pcx.fatalError(tk.toExplainString()+"elseの後に来る語句が不正です");
+                pcx.recoverableError(tk.toExplainString()+"elseの後に来る語句が不正です");
                 break;
             }
 
