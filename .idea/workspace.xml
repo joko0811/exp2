@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="941ba714-978a-43b4-9d7d-7b529cb3ad84" name="Default Changelist" comment="Default Changelist">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/ConditionAnd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/ConditionAnd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/ConditionFactor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/ConditionFactor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/ConditionOr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/ConditionOr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lang/c/test.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/test.c" afterDir="false" />
-    </list>
+    <list default="true" id="941ba714-978a-43b4-9d7d-7b529cb3ad84" name="Default Changelist" comment="Default Changelist" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,13 +27,13 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementExecution.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementIf.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementWhile.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/lang/c/test.c" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementOutput.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/TermDiv.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementWhile.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementIf.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementInput.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementCondition.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/TermDiv.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -68,7 +62,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
-  <component name="RunManager" selected="アプリケーション.MiniCompiler">
+  <component name="RunManager" selected="Application.MiniCompiler">
     <configuration name="MiniCompiler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lang.c.MiniCompiler" />
       <module name="miniCV00forStudent" />
@@ -110,13 +104,13 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="アプリケーション.TestCToken" />
-      <item itemvalue="アプリケーション.MiniCompiler" />
-      <item itemvalue="アプリケーション.MiniCompilerCondition" />
+      <item itemvalue="Application.TestCToken" />
+      <item itemvalue="Application.MiniCompiler" />
+      <item itemvalue="Application.MiniCompilerCondition" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="アプリケーション.MiniCompiler" />
+        <item itemvalue="Application.MiniCompiler" />
       </list>
     </recent_temporary>
   </component>
@@ -183,6 +177,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

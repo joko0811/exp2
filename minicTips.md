@@ -4,7 +4,7 @@
 
 2021年度情報科学実験Ⅱ
 
-実験6実施時
+実験9実施時
 
 ## 構造
 
@@ -44,19 +44,6 @@ number ::= NUM
 ### condition
 
 ```
-condition ::= TRUE | FALSE | expression ( conditionLT | conditionLE | conditionGT | conditionGE | conditionEQ | conditionNE )
-conditionLT ::= LT expression
-conditionLE ::= LE expression
-conditionGT ::= GT expression
-conditionGE ::= GE expression
-conditionEQ ::= EQ expression
-conditionNE ::= NE expression
-（注）LT=’<’, LE=’<=’, GT=’>’, GE=’>=’, EQ=’==’, NE=’!=’
-```
-
-### H8追加箇所
-
-```
 condition ::= conditionNot | unsignedCondition
 conditionNot ::= NOT unsignedCondition
 unsignedCondition ::= conditionTerm {conditionAnd | conditionOr}
@@ -72,25 +59,9 @@ conditionNE ::= NE conditionFactor
 conditionFactor ::= TRUE | FALSE | expression | LPAR condition RPAR
 ```
 
-## TODO
+### H9追加箇所
 
 ```
-program ::= expression
-expression ::= term { expressionAdd | expressionSub }
-expressionAdd ::= PLUS term
-expressionSub ::= MINUS term
-term ::= factor { termMult | termDiv }
-termMult ::= MULT factor
-termDiv ::= DIV factor
-factor ::= plusFactor | minusFactor | unsignedFactor
-plusFactor ::= PLUS unsignedFactor
-minusFactor ::= MINUS unsignedFactor
-unsignedFactor ::= factorAmp | number | LPAR expression RPAR
-factorAmp ::= AMP number
-number ::= NUM
+fatalError投げてる箇所を全部三つのエラーに分類しなおす（くそだるい）
 ```
 
-
-
-- {}について見直す
-- 下位要素が複数ある場合のsemanticCheckでの型つけについて見直す
