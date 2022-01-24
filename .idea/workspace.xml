@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="941ba714-978a-43b4-9d7d-7b529cb3ad84" name="Default Changelist" comment="Default Changelist">
-      <change afterPath="$PROJECT_DIR$/src/lang/c/parse/StatementOutput.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ideavimrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/minicTips.md" beforeDir="false" afterPath="$PROJECT_DIR$/minicTips.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/Statement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/Statement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lang/c/test.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/test.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,19 +29,22 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementExecution.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/lang/c/test.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementInput.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementOutput.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/TermDiv.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementWhile.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementIf.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementInput.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementExecution.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/TermDiv.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementCondition.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="20nZNfh6vygeY3P32pZQHMLpAko" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -66,7 +65,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
-  <component name="RunManager" selected="アプリケーション.MiniCompiler">
+  <component name="RunManager" selected="Application.MiniCompiler">
     <configuration name="MiniCompiler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lang.c.MiniCompiler" />
       <module name="miniCV00forStudent" />
@@ -108,13 +107,13 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="アプリケーション.TestCToken" />
-      <item itemvalue="アプリケーション.MiniCompiler" />
-      <item itemvalue="アプリケーション.MiniCompilerCondition" />
+      <item itemvalue="Application.TestCToken" />
+      <item itemvalue="Application.MiniCompiler" />
+      <item itemvalue="Application.MiniCompilerCondition" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="アプリケーション.MiniCompiler" />
+        <item itemvalue="Application.MiniCompiler" />
       </list>
     </recent_temporary>
   </component>
