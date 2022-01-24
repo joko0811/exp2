@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="941ba714-978a-43b4-9d7d-7b529cb3ad84" name="Default Changelist" comment="">
+    <list default="true" id="941ba714-978a-43b4-9d7d-7b529cb3ad84" name="Default Changelist" comment="Default Changelist">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lang/c/test.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/test.c" afterDir="false" />
     </list>
@@ -28,6 +28,16 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/lang/c/test.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementInput.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementOutput.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementWhile.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementIf.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementExecution.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/TermDiv.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/lang/c/parse/StatementCondition.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -49,12 +59,13 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="reference.idesettings.debugger.capture" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
-  <component name="RunManager" selected="Application.MiniCompilerCondition">
+  <component name="RunManager" selected="Application.MiniCompiler">
     <configuration name="MiniCompiler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lang.c.MiniCompiler" />
       <module name="miniCV00forStudent" />
@@ -102,14 +113,14 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MiniCompilerCondition" />
         <item itemvalue="Application.MiniCompiler" />
-        <item itemvalue="Application.MiniCompiler" />
-        <item itemvalue="Application.TestCToken" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\perry\AppData\Roaming\Subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="941ba714-978a-43b4-9d7d-7b529cb3ad84" name="Default Changelist" comment="" />
@@ -127,7 +138,18 @@
       <workItem from="1638756706914" duration="18321000" />
       <workItem from="1638776201799" duration="5106000" />
       <workItem from="1639360579046" duration="1779000" />
-      <workItem from="1640423882197" duration="329000" />
+      <workItem from="1640423882197" duration="1891000" />
+      <workItem from="1640935760149" duration="5584000" />
+      <workItem from="1641111890460" duration="1274000" />
+      <workItem from="1641343570582" duration="1978000" />
+      <workItem from="1641348696881" duration="189000" />
+      <workItem from="1641348913375" duration="134000" />
+      <workItem from="1641349109888" duration="693000" />
+      <workItem from="1641349964664" duration="146000" />
+      <workItem from="1641350134185" duration="433000" />
+      <workItem from="1641351020585" duration="105000" />
+      <workItem from="1641351150184" duration="9753000" />
+      <workItem from="1641431898978" duration="6619000" />
     </task>
     <servers />
   </component>
@@ -156,6 +178,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="4" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
