@@ -4,14 +4,16 @@
 
 2021年度情報科学実験Ⅱ
 
-実験5実施時
+実験6実施時
 
 ## 構造
 
 ### 現状
 
 ```
-program ::= expression
+program ::= { statement } EOF
+statement ::= statementAssign
+statementAssign ::= primary ASSIGN expression SEMI
 expression ::= term { expressionAdd | expressionSub }
 expressionAdd ::= PLUS term
 expressionSub ::= MINUS term
@@ -27,17 +29,23 @@ addressToValue ::= primary
 primary ::= primaryMult | variable
 primaryMult ::= MULT variable
 variable ::= ident [ array ]
-array ::= LBRA expression RBRA （注）LBRA=’[’, RBRA=’]’
-ident ::= IDENT （注)’_’ も英字として扱うこと
+array ::= LBRA expression RBRA
+ident ::= IDENT
 number ::= NUM
 ```
 
-### ex5追加箇所
+### ex6追加箇所
 
 ```
-program ::= { statement } EOF
-statement ::= statementAssign
-statementAssign ::= primary ASSIGN expression SEMI （注）ASSIGN=’=’, SEMI=’;’
+condition ::= TRUE | FALSE | expression ( conditionLT | conditionLE | conditionGT
+| conditionGE | conditionEQ | conditionNE )
+conditionLT ::= LT expression
+conditionLE ::= LE expression
+conditionGT ::= GT expression
+conditionGE ::= GE expression
+conditionEQ ::= EQ expression
+conditionNE ::= NE expression
+（注）LT=’<’, LE=’<=’, GT=’>’, GE=’>=’, EQ=’==’, NE=’!=’
 ```
 
 ## TODO
