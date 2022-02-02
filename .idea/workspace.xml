@@ -205,5 +205,4 @@
     <SUITE FILE_PATH="coverage/miniCV00forStudent$MiniCompiler.ic" NAME="MiniCompiler Coverage Results" MODIFIED="1638764245360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>lang.c.*</FILTER>
     </SUITE>
-  </component>
 </project>
