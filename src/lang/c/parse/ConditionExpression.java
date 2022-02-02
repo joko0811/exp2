@@ -20,13 +20,40 @@ public class ConditionExpression extends CParseRule {
         conditionTerm.parse(pcx);
         CTokenizer ct = pcx.getTokenizer();
         CToken tk = ct.getCurrentToken(pcx);
-        while(ConditionAnd.isFirst(tk)){
-            if(ConditionAnd.isFirst(tk)){
-                list = new ConditionAnd(pcx,conditionTerm);
+
+        while(ConditionLT.isFirst(tk) || ConditionLE.isFirst(tk) || ConditionGT.isFirst(tk) || ConditionGE.isFirst(tk) || ConditionEQ.isFirst(tk) || ConditionNE.isFirst(tk)){
+            if (ConditionLT.isFirst(tk)) {
+                list = new ConditionLT(pcx,conditionTerm);
                 list.parse(pcx);
                 conditionTerm = list;
-                tk=ct.getCurrentToken(pcx);
+                tk = ct.getCurrentToken(pcx);
+            } else if (ConditionLE.isFirst(tk)) {
+                list = new ConditionLE(pcx,conditionTerm);
+                list.parse(pcx);
+                conditionTerm = list;
+                tk = ct.getCurrentToken(pcx);
+            } else if (ConditionGT.isFirst(tk)) {
+                list = new ConditionGT(pcx,conditionTerm);
+                list.parse(pcx);
+                conditionTerm = list;
+                tk = ct.getCurrentToken(pcx);
+            } else if (ConditionGE.isFirst(tk)) {
+                list = new ConditionGE(pcx,conditionTerm);
+                list.parse(pcx);
+                conditionTerm = list;
+                tk = ct.getCurrentToken(pcx);
+            } else if (ConditionEQ.isFirst(tk)) {
+                list = new ConditionEQ(pcx,conditionTerm);
+                list.parse(pcx);
+                conditionTerm = list;
+                tk = ct.getCurrentToken(pcx);
+            } else if (ConditionNE.isFirst(tk)) {
+                list = new ConditionNE(pcx,conditionTerm);
+                list.parse(pcx);
+                conditionTerm = list;
+                tk = ct.getCurrentToken(pcx);
             }
+            tk = ct.getCurrentToken(pcx);
         }
         conditionExpression = conditionTerm;
     }

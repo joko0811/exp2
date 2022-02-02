@@ -21,8 +21,8 @@ public class ConditionNE extends CParseRule {
         CToken tk = ct.getCurrentToken(pcx);
         op = tk;
         tk=ct.getNextToken(pcx);
-        if(ConditionStatement.isFirst(tk)){
-            right=new ConditionStatement(pcx);
+        if(ConditionTerm.isFirst(tk)){
+            right=new ConditionTerm(pcx);
             right.parse(pcx);
         }else{
             pcx.fatalError(op.toExplainString()+"演算子の後に右辺がありません");

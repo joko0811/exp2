@@ -6,7 +6,7 @@ import lang.*;
 import lang.c.*;
 
 public class ConditionAnd extends CParseRule{
-    // conditionAnd ::= AND conditionTerm
+    // conditionAnd :: AND conditionExpression
     private CParseRule left,right;
     private CToken op;
 
@@ -22,8 +22,8 @@ public class ConditionAnd extends CParseRule{
 
         op = ct.getCurrentToken(pcx);
         CToken tk = ct.getNextToken(pcx);
-        if(ConditionTerm.isFirst(tk)){
-            right = new ConditionTerm(pcx);
+        if(ConditionExpression.isFirst(tk)){
+            right = new ConditionExpression(pcx);
             right.parse(pcx);
         }else{
             pcx.fatalError(tk.toExplainString()+"\"&&\"の後はconditionです");

@@ -8,8 +8,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minicTips.md" beforeDir="false" afterPath="$PROJECT_DIR$/minicTips.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lang/c/parse/Condition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/Condition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/ConditionAnd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/ConditionAnd.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lang/c/parse/ConditionEQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/ConditionEQ.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/ConditionFactor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/ConditionFactor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/ConditionExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/ConditionExpression.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lang/c/parse/ConditionGE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/ConditionGE.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lang/c/parse/ConditionGT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/ConditionGT.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lang/c/parse/ConditionLE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/ConditionLE.java" afterDir="false" />
@@ -17,7 +18,7 @@
       <change beforePath="$PROJECT_DIR$/src/lang/c/parse/ConditionNE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/ConditionNE.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lang/c/parse/ConditionNot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/ConditionNot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lang/c/parse/ConditionOr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/ConditionOr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/ConditionTerm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/ConditionTerm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/c/parse/ConditionStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/parse/ConditionStatement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lang/c/test.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/test.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -164,6 +165,7 @@
       <workItem from="1641431898978" duration="7301000" />
       <workItem from="1641455733220" duration="9720000" />
       <workItem from="1641517430645" duration="6979000" />
+      <workItem from="1643772996784" duration="3692000" />
     </task>
     <servers />
   </component>
@@ -202,8 +204,8 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/lang/c/parse/ConditionNot.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="17" />
+          <line>20</line>
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

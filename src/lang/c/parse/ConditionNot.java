@@ -6,7 +6,7 @@ import lang.*;
 import lang.c.*;
 
 public class ConditionNot extends CParseRule{
-    // conditionNot ::= NOT conditionFactor
+    // conditionNot ::= NOT (conditionFactor | statementCondition)
     private CParseRule condition;
     private CToken op;
 
@@ -20,11 +20,14 @@ public class ConditionNot extends CParseRule{
 
         op = ct.getCurrentToken(pcx);
         CToken tk = ct.getNextToken(pcx);
-        if(ConditionFactor.isFirst(tk)){
+        if(StatementCondition.isFirst(tk)) {
+            condition = new StatementCondition(pcx);
+            condition.parse(pcx);
+        }else if(ConditionFactor.isFirst(tk)){
             condition = new ConditionFactor(pcx);
             condition.parse(pcx);
         }else{
-            pcx.fatalError(tk.toExplainString()+"\"!\"の後はConditionFactorです");
+            pcx.fatalError(tk.toExplainString()+"\"!\"の後の語句が不正です");
         }
     }
 

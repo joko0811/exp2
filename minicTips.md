@@ -69,9 +69,30 @@ conditionOr ::= OR conditionExpression
 conditionExpression ::= conditionTerm {conditionAnd}
 conditionAnd :: AND conditionTerm
 conditionTerm ::= conditionFactor|conditionNot
-conditionNot ::= NOT conditionFactor
+conditionNot ::= NOT conditionFactor | statementCondition
 conditionFactor ::= TRUE | FALSE | expression
 ```
+
+
+
+```
+condition ::= conditionStatement {conditionOr}
+conditionOr ::= OR conditionStatement
+conditionStatement ::= conditionExpression {conditionAnd}
+conditionAnd :: AND conditionExpression
+conditionExpression ::= conditionTerm  {conditionLT | conditionLE | conditionGT | conditionGE | conditionEQ | conditionNE} 
+conditionLT ::= LT conditionTerm
+conditionLE ::= LE conditionTerm 
+conditionGT ::= GT conditionTerm 
+conditionGE ::= GE conditionTerm 
+conditionEQ ::= EQ conditionTerm
+conditionNE ::= NE conditionTerm
+conditionTerm ::= conditionFactor | conditionNot
+conditionNot ::= NOT (conditionFactor | statementCondition)
+conditionFactor ::= TRUE | FALSE | expression
+```
+
+
 
 ## TODO
 

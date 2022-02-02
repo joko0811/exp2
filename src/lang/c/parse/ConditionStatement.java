@@ -5,7 +5,7 @@ import lang.*;
 import lang.c.*;
 
 public class ConditionStatement extends CParseRule {
-    // conditionStatement ::= conditionExpression {conditionOr}
+    // conditionStatement ::= conditionExpression {conditionAnd}
     private CParseRule condition;
 
     public ConditionStatement(CParseContext pcx) {
@@ -15,23 +15,20 @@ public class ConditionStatement extends CParseRule {
     }
     public void parse(CParseContext pcx) throws FatalErrorException {
         CParseRule conditionExpression=null, list=null;
-        conditionExpression = new ConditionTerm(pcx);
+        conditionExpression = new ConditionExpression(pcx);
         conditionExpression.parse(pcx);
         CTokenizer ct = pcx.getTokenizer();
         CToken tk = ct.getCurrentToken(pcx);
-        while(ConditionAnd.isFirst(tk)||ConditionOr.isFirst(tk)){
+
+        while(ConditionAnd.isFirst(tk)){
             if(ConditionAnd.isFirst(tk)){
                 list = new ConditionAnd(pcx,conditionExpression);
                 list.parse(pcx);
                 conditionExpression = list;
                 tk=ct.getCurrentToken(pcx);
-            }else if(ConditionOr.isFirst(tk)){
-                list = new ConditionOr(pcx,conditionExpression);
-                list.parse(pcx);
-                conditionExpression = list;
-                tk=ct.getCurrentToken(pcx);
             }
         }
+
         condition = conditionExpression;
     }
 

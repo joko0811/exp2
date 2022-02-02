@@ -6,7 +6,7 @@ import lang.*;
 import lang.c.*;
 
 public class ConditionOr extends CParseRule{
-    // conditionOr ::= OR conditionExpression
+    // conditionOr ::= OR conditionStatement
     private CParseRule left,right;
     private CToken op;
 
@@ -22,11 +22,12 @@ public class ConditionOr extends CParseRule{
 
         op = ct.getCurrentToken(pcx);
         CToken tk = ct.getNextToken(pcx);
-        if(ConditionExpression.isFirst(tk)){
-            right = new ConditionExpression(pcx);
+
+        if(ConditionStatement.isFirst(tk)){
+            right = new ConditionStatement(pcx);
             right.parse(pcx);
         }else{
-            pcx.fatalError(tk.toExplainString()+"\"||\"の後はconditionです");
+            pcx.fatalError(tk.toExplainString()+"\"||\"の後はconditionStatementです");
         }
     }
 
