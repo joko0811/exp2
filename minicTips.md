@@ -57,19 +57,20 @@ conditionNE ::= NE expression
 ### H8追加箇所
 
 ```
-condition ::= conditionNot | unsignedCondition
-conditionNot ::= NOT unsignedCondition
-unsignedCondition ::= conditionTerm {conditionAnd | conditionOr}
+condition ::= conditionStatement  {conditionLT | conditionLE | conditionGT | conditionGE | conditionEQ | conditionNE} 
+conditionLT ::= LT conditionStatement 
+conditionLE ::= LE conditionStatement 
+conditionGT ::= GT conditionStatement 
+conditionGE ::= GE conditionStatement 
+conditionEQ ::= EQ conditionStatement 
+conditionNE ::= NE conditionStatement 
+conditionStatement ::= conditionExpression {conditionOr}
+conditionOr ::= OR conditionExpression
+conditionExpression ::= conditionTerm {conditionAnd}
 conditionAnd :: AND conditionTerm
-conditionOr ::= OR conditionTerm
-conditionTerm ::= conditionFactor {conditionLT | conditionLE | conditionGT | conditionGE | conditionEQ | conditionNE} 
-conditionLT ::= LT conditionFactor
-conditionLE ::= LE conditionFactor
-conditionGT ::= GT conditionFactor
-conditionGE ::= GE conditionFactor
-conditionEQ ::= EQ conditionFactor
-conditionNE ::= NE conditionFactor
-conditionFactor ::= TRUE | FALSE | expression | LPAR condition RPAR
+conditionTerm ::= conditionFactor|conditionNot
+conditionNot ::= NOT conditionFactor
+conditionFactor ::= TRUE | FALSE | expression
 ```
 
 ## TODO

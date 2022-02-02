@@ -6,7 +6,7 @@ import lang.*;
 import lang.c.*;
 
 public class ConditionNot extends CParseRule{
-    // conditionNot ::= NOT unsignedCondition
+    // conditionNot ::= NOT conditionFactor
     private CParseRule condition;
     private CToken op;
 
@@ -20,11 +20,11 @@ public class ConditionNot extends CParseRule{
 
         op = ct.getCurrentToken(pcx);
         CToken tk = ct.getNextToken(pcx);
-        if(UnsignedCondition.isFirst(tk)){
-            condition = new UnsignedCondition(pcx);
+        if(ConditionFactor.isFirst(tk)){
+            condition = new ConditionFactor(pcx);
             condition.parse(pcx);
         }else{
-            pcx.fatalError(tk.toExplainString()+"\"!\"の後はunsignedConditionです");
+            pcx.fatalError(tk.toExplainString()+"\"!\"の後はConditionFactorです");
         }
     }
 

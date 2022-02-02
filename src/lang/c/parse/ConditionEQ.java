@@ -21,8 +21,8 @@ public class ConditionEQ extends CParseRule {
         CToken tk = ct.getCurrentToken(pcx);
         op = tk;
         tk=ct.getNextToken(pcx);
-        if(ConditionFactor.isFirst(tk)){
-            right=new ConditionFactor(pcx);
+        if(ConditionStatement.isFirst(tk)){
+            right=new ConditionStatement(pcx);
             right.parse(pcx);
         }else{
             pcx.fatalError(op.toExplainString()+"演算子の後に右辺がありません");
