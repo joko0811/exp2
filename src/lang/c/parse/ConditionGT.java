@@ -21,8 +21,8 @@ public class ConditionGT extends CParseRule {
         CToken tk = ct.getCurrentToken(pcx);
         op = tk;
         tk=ct.getNextToken(pcx);
-        if(Expression.isFirst(tk)){
-            right=new Expression(pcx);
+        if(ConditionTerm.isFirst(tk)){
+            right=new ConditionTerm(pcx);
             right.parse(pcx);
         }else{
             pcx.fatalError(op.toExplainString()+"演算子の後に右辺がありません");

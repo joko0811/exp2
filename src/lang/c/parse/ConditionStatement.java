@@ -4,34 +4,32 @@ import java.io.PrintStream;
 import lang.*;
 import lang.c.*;
 
-public class Condition extends CParseRule {
-    // condition ::= conditionStatement {conditionOr}
+public class ConditionStatement extends CParseRule {
+    // conditionStatement ::= conditionExpression {conditionAnd}
     private CParseRule condition;
 
-    public Condition(CParseContext pcx) {
+    public ConditionStatement(CParseContext pcx) {
     }
     public static boolean isFirst(CToken tk) {
-        return ConditionStatement.isFirst(tk);
+        return ConditionExpression.isFirst(tk);
     }
-
     public void parse(CParseContext pcx) throws FatalErrorException {
-        CParseRule conditionStatement=null, list=null;
-
-        conditionStatement = new ConditionStatement(pcx);
-        conditionStatement.parse(pcx);
-
+        CParseRule conditionExpression=null, list=null;
+        conditionExpression = new ConditionExpression(pcx);
+        conditionExpression.parse(pcx);
         CTokenizer ct = pcx.getTokenizer();
         CToken tk = ct.getCurrentToken(pcx);
 
-        while(ConditionOr.isFirst(tk)){
-            if(ConditionOr.isFirst(tk)){
-                list = new ConditionOr(pcx,conditionStatement);
+        while(ConditionAnd.isFirst(tk)){
+            if(ConditionAnd.isFirst(tk)){
+                list = new ConditionAnd(pcx,conditionExpression);
                 list.parse(pcx);
-                conditionStatement = list;
+                conditionExpression = list;
                 tk=ct.getCurrentToken(pcx);
             }
         }
-        condition = conditionStatement;
+
+        condition = conditionExpression;
     }
 
     public void semanticCheck(CParseContext pcx) throws FatalErrorException {
@@ -44,10 +42,10 @@ public class Condition extends CParseRule {
 
     public void codeGen(CParseContext pcx) throws FatalErrorException {
         PrintStream o = pcx.getIOContext().getOutStream();
-        o.println(";;; condition starts");
+        o.println(";;; conditionStatement starts");
         if (condition != null) {
             condition.codeGen(pcx);
         }
-        o.println(";;; condition completes");
+        o.println(";;; conditionStatement completes");
     }
 }

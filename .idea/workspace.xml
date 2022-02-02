@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="941ba714-978a-43b4-9d7d-7b529cb3ad84" name="Default Changelist" comment="Default Changelist">
+    <list default="true" id="941ba714-978a-43b4-9d7d-7b529cb3ad84" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lang/c/test.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/c/test.c" afterDir="false" />
     </list>
@@ -149,7 +149,10 @@
       <workItem from="1641350134185" duration="433000" />
       <workItem from="1641351020585" duration="105000" />
       <workItem from="1641351150184" duration="9753000" />
-      <workItem from="1641431898978" duration="6619000" />
+      <workItem from="1641431898978" duration="7301000" />
+      <workItem from="1641455733220" duration="9720000" />
+      <workItem from="1641517430645" duration="6979000" />
+      <workItem from="1643772996784" duration="4173000" />
     </task>
     <servers />
   </component>
@@ -186,6 +189,11 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="4" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/lang/c/parse/ConditionNot.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -197,5 +205,4 @@
     <SUITE FILE_PATH="coverage/miniCV00forStudent$MiniCompiler.ic" NAME="MiniCompiler Coverage Results" MODIFIED="1638764245360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>lang.c.*</FILTER>
     </SUITE>
-  </component>
 </project>

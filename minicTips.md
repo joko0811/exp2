@@ -12,7 +12,14 @@
 
 ```
 program ::= { statement } EOF
-statement ::= statementAssign
+statement ::= statementAssign | statementIfElse | statementWhile | statementInput | statementOutput
+statementIfElse ::= statementIf [ [ { ELSE statementIf } ] [ ELSE statementExecution ] ]
+statementIf ::= IF statementCondition statementExecution
+statementExecution ::= LCUR [ { statement } ] RCUR
+statementWhile ::= WHILE statementCondition statementExecution
+statementInput ::= INPUT primary SEMI
+statementOutput ::= OUTPUT expression SEMI
+statementCondition ::= LPAR condition RPAR
 statementAssign ::= primary ASSIGN expression SEMI
 expression ::= term { expressionAdd | expressionSub }
 expressionAdd ::= PLUS term
@@ -37,8 +44,7 @@ number ::= NUM
 ### condition
 
 ```
-condition ::= TRUE | FALSE | expression ( conditionLT | conditionLE | conditionGT
-| conditionGE | conditionEQ | conditionNE )
+condition ::= TRUE | FALSE | expression ( conditionLT | conditionLE | conditionGT | conditionGE | conditionEQ | conditionNE )
 conditionLT ::= LT expression
 conditionLE ::= LE expression
 conditionGT ::= GT expression
@@ -48,22 +54,44 @@ conditionNE ::= NE expression
 （注）LT=’<’, LE=’<=’, GT=’>’, GE=’>=’, EQ=’==’, NE=’!=’
 ```
 
-### H7追加箇所
+### H8追加箇所
 
 ```
-statement ::= statementAssign | statementIfElse | statementWhile | statementInput | statementOutput
-statementIfElse ::= statementIf [ [ { ELSE statementIf } ] [ ELSE statementExecution ] ]
-statementIf ::= IF statementCondition statementExecution
-statementExecution ::= LCUR [ { statement } ] RCUR
-statementWhile ::= WHILE statementCondition statementExecution
-statementInput ::= INPUT primary SEMI
-statementOutput ::= OUTPUT expression SEMI
-statementCondition ::= LPAR condition RPAR
-
+condition ::= conditionStatement {conditionOr}
+conditionOr ::= OR conditionStatement
+conditionStatement ::= conditionExpression {conditionAnd}
+conditionAnd :: AND conditionExpression
+conditionExpression ::= conditionTerm  {conditionLT | conditionLE | conditionGT | conditionGE | conditionEQ | conditionNE} 
+conditionLT ::= LT conditionTerm
+conditionLE ::= LE conditionTerm 
+conditionGT ::= GT conditionTerm 
+conditionGE ::= GE conditionTerm 
+conditionEQ ::= EQ conditionTerm
+conditionNE ::= NE conditionTerm
+conditionTerm ::= conditionFactor | conditionNot
+conditionNot ::= NOT (conditionFactor | statementCondition)
+conditionFactor ::= TRUE | FALSE | expression
 ```
 
 ## TODO
 
-- ifむずい
-  - [{ELSE}]
-- inputがprimay,outputがexpressionなのはinputは変数のみが対応しているのに対してoutputが足し算などの式に対応しているから
+```
+program ::= expression
+expression ::= term { expressionAdd | expressionSub }
+expressionAdd ::= PLUS term
+expressionSub ::= MINUS term
+term ::= factor { termMult | termDiv }
+termMult ::= MULT factor
+termDiv ::= DIV factor
+factor ::= plusFactor | minusFactor | unsignedFactor
+plusFactor ::= PLUS unsignedFactor
+minusFactor ::= MINUS unsignedFactor
+unsignedFactor ::= factorAmp | number | LPAR expression RPAR
+factorAmp ::= AMP number
+number ::= NUM
+```
+
+
+
+- {}について見直す
+- 下位要素が複数ある場合のsemanticCheckでの型つけについて見直す
