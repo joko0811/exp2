@@ -57,25 +57,6 @@ conditionNE ::= NE expression
 ### H8追加箇所
 
 ```
-condition ::= conditionStatement  {conditionLT | conditionLE | conditionGT | conditionGE | conditionEQ | conditionNE} 
-conditionLT ::= LT conditionStatement 
-conditionLE ::= LE conditionStatement 
-conditionGT ::= GT conditionStatement 
-conditionGE ::= GE conditionStatement 
-conditionEQ ::= EQ conditionStatement 
-conditionNE ::= NE conditionStatement 
-conditionStatement ::= conditionExpression {conditionOr}
-conditionOr ::= OR conditionExpression
-conditionExpression ::= conditionTerm {conditionAnd}
-conditionAnd :: AND conditionTerm
-conditionTerm ::= conditionFactor|conditionNot
-conditionNot ::= NOT conditionFactor | statementCondition
-conditionFactor ::= TRUE | FALSE | expression
-```
-
-
-
-```
 condition ::= conditionStatement {conditionOr}
 conditionOr ::= OR conditionStatement
 conditionStatement ::= conditionExpression {conditionAnd}
@@ -91,8 +72,6 @@ conditionTerm ::= conditionFactor | conditionNot
 conditionNot ::= NOT (conditionFactor | statementCondition)
 conditionFactor ::= TRUE | FALSE | expression
 ```
-
-
 
 ## TODO
 
